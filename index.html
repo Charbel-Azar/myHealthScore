@@ -1,40 +1,46 @@
-<!-- Polygenic Risk Visualization -->
-                        <div class="polygenic-visual">
+
                          
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veritas Genetics - myHealthScore</title>
+  <title>myHealthScore | Polygenic Risk screening</title>
+    <link rel="icon" href="https://www.veritasint.com/wp-content/uploads/2021/02/Favicon.png" sizes="32x32">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+/* Global font reset */
+html, body, * {
+  font-family: 'Quicksand', sans-serif;
+}
     body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
     line-height: 1.6;
-    color: #333;
-    background: radial-gradient(circle at center, #d3c9de, #3549a2);
-    background-repeat: no-repeat;
-    background-size: 150% 150%;
-    animation: pulseGradient 1 ease-in-out infinite;
-}
+  
+      background: linear-gradient(45deg, #667eea, #b4bde4, #e9b543);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+        }
 
-@keyframes pulseGradient {
-    0%, 100% {
-        background-size: 150% 150%;
-    }
-    50% {
-        background-size: 200% 200%;
-    }
-}
-
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
         .container{
   max-width:1200px;
-  margin:0 auto;
+  margin:2rem auto;
   background:#fff;
   min-height:100vh;
   box-shadow:0 0 30px rgba(0,0,0,.1);
@@ -82,22 +88,20 @@
             font-size: 1rem;
             opacity: 0.8;
         }
+            .nav {
+  background:#f8f9fa;
+  padding:1rem 0;
+  border-bottom:1px solid #e9ecef;
+  display:flex;
+  justify-content:center;   /* horizontal centring */
+  align-items:center;       /* vertical centring */
+}
 
-        /* Navigation */
-        .nav {
-            background: #f8f9fa;
-            padding: 1rem 0;
-            border-bottom: 1px solid #e9ecef;
-        }
+.brand-icon {
+  width:10vh;    /* adjust size if needed */
+  height:auto;
+}
 
-        .nav-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
 
         .contact-info {
             display: flex;
@@ -127,6 +131,7 @@
             color: #2c3e50;
             margin-bottom: 1rem;
             font-weight: 300;
+            text-transform: capitalize;
         }
 
         .hero-subtitle {
@@ -415,11 +420,7 @@
                 font-size: 2rem;
             }
 
-            .nav-content {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
+          
 
             .contact-info {
                 flex-direction: column;
@@ -542,6 +543,193 @@
             from { transform: rotateY(0deg); }
             to { transform: rotateY(360deg); }
         }
+        /* animated underline */
+.animated-underline {
+  position: relative;
+  display: inline-block;
+}
+
+/* the line */
+.animated-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;          /* distance below text */
+  height: 3px;           /* line thickness */
+  width: 100%;
+  background: #667eea;   /* line colour */
+border-radius:3px;    
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: underlineLoop 2.5s ease-in-out infinite;
+}
+
+@keyframes underlineLoop {
+  0%   { transform: scaleX(0); transform-origin: left;  }
+  50%  { transform: scaleX(1); transform-origin: left;  }
+  50.1%{ transform-origin: right; } /* pivot switch */
+  100% { transform: scaleX(0); transform-origin: right; }
+}
+/* CTA button */
+.cta-button{
+  display:inline-block;
+  margin-top:1.5rem;
+   margin-bottom:1.5rem;
+  padding:0.8rem 2rem;
+  font-size:1rem;
+  font-weight:600;
+  color:#000;
+  background:#fff;
+  border:2px solid #000;
+  border-radius:50px;                 /* pill shape */
+  text-decoration:none;
+  cursor:pointer;
+  animation:pumpGlow 2.2s ease-in-out infinite;
+  transition:all .25s ease;           /* smooth stop on hover */
+}
+
+/* on hover: hold the “up” state, no animation */
+.cta-button:hover{
+  animation:none;
+  transform:scale(1.05);
+  box-shadow:0 0 20px 6px #667eea88;
+  background:#667eea;
+  color:#fff;
+  border-color:#667eea;
+}
+
+/* keyframes for pumping + shadow glow */
+@keyframes pumpGlow{
+  0%   {transform:scale(1);   box-shadow:0 0 0 0 #667eea00;}
+  50%  {transform:scale(1.05);box-shadow:0 0 20px 6px #667eea88;}
+  100% {transform:scale(1);   box-shadow:0 0 0 0 #667eea00;}
+}
+/* === SQUARE HERO BANNER ===================================== */
+.gb-layout-hero-1{
+  position:relative;
+   width:80%;               /* shrinks to 80 % of parent */
+  margin:0 auto;   
+  aspect-ratio:1 / 1;                 /* <— square shape */
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  border-radius: 15px;
+  justify-content:center;
+}
+
+/* background GIF fills banner */
+.gb-layout-hero-1 .gb-container-image-wrap,
+.gb-layout-hero-1 .gb-container-image-wrap img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+    object-position:center;
+}
+
+/* dark overlay */
+.gb-layout-hero-1::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0, 0, 0, 0.801);
+  z-index:0;
+}
+
+/* content on top */
+.gb-layout-hero-1 .gb-container-content{
+  position:relative;
+  z-index:1;
+  max-width:700px;
+  padding:0 5%;
+  text-align:center;
+  color:#fff;
+}
+
+/* headline & paragraph sizes */
+.gb-layout-hero-1 h2{
+  font-size:clamp(1.8rem,4vw,2.8rem);
+  margin-bottom:1rem;
+  line-height:1.25;
+}
+.gb-layout-hero-1 p{
+  font-size:clamp(1rem,2.2vw,1.2rem);
+  line-height:1.6;
+}
+
+        /* User Info Card */
+        .user-info-card {
+            background: linear-gradient(135deg, #667eea, #667eea);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 3rem auto;
+            max-width: 500px;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+        }
+
+        .user-info-card h3 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: white;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            background: white;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+.cta2-button {
+    display: block;
+    width: 100%;
+    padding: 1.2rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #667eea;
+    background: white;
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.5s ease;
+    margin-top: 1rem;
+    animation: pumpGlow 2.2s ease-in-out infinite;
+}
+
+.cta2-button:hover {
+    animation: none; /* stop pumping */
+    background: #667eea; /* blue background */
+    color: white;
+    box-shadow: 0 0 25px 10px rgba(255, 255, 255, 0.9); /* keep strong white shadow */
+}
+       
+
     </style>
 </head>
 <body>
@@ -557,22 +745,27 @@
             />
 </header>
 
-        <!-- Navigation -->
-        <nav class="nav">
-            <div class="nav-content">
-                <a href="https://veritasint.com" class="website">veritasint.com</a>
-                <div class="contact-info">
-                    <span>victoria.kharrat@cic-als.com</span>
-                    <span>961 3 110 898</span>
-                </div>
-            </div>
-        </nav>
+ <!-- Navigation -->
+<!-- Navigation -->
+<nav class="nav">
+  <a href="https://www.veritasint.com/myhealthscore/" class="brand-link">
+    <img src="https://www.veritasint.com/wp-content/uploads/2025/05/VeritasFZ-1.png"
+         alt="myHealthScore icon" class="brand-icon">
+  </a>
+</nav>
+
+
 
         <!-- Main Content -->
         <main class="main-content">
             <!-- Hero Section -->
             <section class="hero-section fade-in">
-                <h1 class="hero-title">What is myHealthScore?</h1>
+                <h1 class="hero-title">
+                Know your hidden disease risks in <br>
+                <b class="animated-underline"><b>one simple test</b></b>
+                </h1>
+<a href="https://wa.me/9613110898?text=Hi%2C%20I%20am%20interested%20in%20your%20myHealthScore%20test.%20How%20can%20I%20start%3F"
+ class="cta-button">Explore How This Test Could Help You</a>
                 <p class="hero-subtitle">myHealthScore is the genetic screening test that provides information about the risk of presenting with common multifactorial diseases. The test determines the polygenic risk, which was previously unperceived, enabling the detection of a greater number of people at risk.</p>
             </section>
 
@@ -713,7 +906,7 @@
                 </div>
             </section>
 
-            <!-- Diseases Section -->
+           <!-- Diseases Section -->
             <section class="diseases-section">
                 <h2 class="section-title">Which diseases are included in myHealthScore?</h2>
                 <p style="text-align: center; color: #666; margin-bottom: 2rem;">The software for the analysis is CE-marked and enables the risk evaluation of presenting different pathologies, providing the specialist with important information for your healthcare:</p>
@@ -764,6 +957,40 @@
                     *For a more comprehensive analysis of cardiovascular disease, the test includes the polygenic risk of: coronary artery disease, atrial fibrillation, lipid profile (triglycerides, LDL and HDL cholesterol) and hypertension.
                 </p>
             </section>
+
+<!-- User Information Card -->
+            <div class="user-info-card">
+                <h3> Get Your Personalized Risk Report</h3>
+                <form id="userForm">
+                    <div class="form-group">
+                        <label for="name">Full Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="age">Age:</label>
+                        <input type="number" id="age" name="age" min="18" max="100" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gender">Gender:</label>
+                        <select id="gender" name="gender" required>
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="doctor">Referring Doctor's Name:</label>
+                        <input type="text" id="doctor" name="doctor" placeholder="Enter doctor's name" required>
+                    </div>
+                    
+                    <button type="submit" class="cta2-button">
+                     Get My Health Score Now!
+                    </button>
+                </form>
+            </div>
 
             <!-- Risk Chart -->
             <section class="chart-section">
@@ -864,12 +1091,14 @@
                             <div style="text-align: center; margin-bottom: 2rem;">
                                 <div style="display: inline-block; background: rgba(255,255,255,0.2); padding: 1rem 2rem; border-radius: 25px; margin-bottom: 1.5rem;">
                                     <div style="color: #ffffff; font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem;">my</div>
-                                    <div style="color: white; font-size: 1.2rem; font-weight: bold;">Health</div>
-                                    <div style="color: #ffffff; font-size: 1.2rem; font-weight: bold;">Score</div>
+                                    <div style="color: white; font-size: 2rem; font-weight: bold;">Health</div>
+                                    <div style="color: #ffffff; font-size: 2rem; font-weight: bold;">Score</div>
                                     <div style="color: #4ecdc4; font-size: 2rem; margin-top: 0.5rem;">+</div>
                                 </div>
+                                
                                 <div style="color: #ffffff; font-weight: bold; font-size: 1.1rem; margin-bottom: 1.5rem;">RISK OF DISEASE</div>
                             </div>
+                            
                             
                             <!-- Risk factors grid matching the brochure layout -->
                             <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; margin-bottom: 1rem;">
@@ -921,6 +1150,18 @@
                     </div>
                 </div>
             </section>
+<div class="wp-block-genesis-blocks-gb-container gb-layout-hero-1 gb-block-container alignfull">
+  <div class="gb-container-inside">
+    <div class="gb-container-image-wrap">
+      <img src="images/giphy.webp" alt="" class="gb-container-image">
+    </div>
+
+    <div class="gb-container-content">
+      <h2 class="wp-block-heading">Improving healthcare through genetics</h2>
+      <p>Our test based on whole-exome and genome sequencing provides the interpretation of extensive genetic information that can be further analyzed in the future.</p>
+    </div>
+  </div>
+</div>
 
             <!-- Benefits Section -->
             <section class="benefits-section">
@@ -1074,6 +1315,57 @@
                     });
                 }
             });
+        });
+    </script>
+    <script>
+        // Form submission handler
+        document.getElementById('userForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const gender = document.getElementById('gender').value;
+            const doctor = document.getElementById('doctor').value;
+            
+            const message = `Hi! I am interested in your myHealthScore test. Here are my details:
+            
+Name: ${name}
+Age: ${age}
+Gender: ${gender}
+Referring Doctor: ${doctor}
+
+Please contact me to schedule my genetic testing appointment.`;
+            
+            const whatsappUrl = `https://wa.me/9613110898?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+
+        // Share functions
+        function shareOnFacebook() {
+            const url = window.location.href;
+            const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+            window.open(facebookUrl, '_blank', 'width=600,height=400');
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+       
+
+
+        // Observe all cards and sections
+        document.querySelectorAll('.stat-card, .user-info-card, .social-proof, .share-section').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
         });
     </script>
 </body>
