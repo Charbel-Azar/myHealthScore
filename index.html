@@ -7,6 +7,10 @@
   <title>myHealthScore | Polygenic Risk screening</title>
     <link rel="icon" href="https://www.veritasint.com/wp-content/uploads/2021/02/Favicon.png" sizes="32x32">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-pbkf8…your‑hash‑here…"
+      crossorigin="anonymous" referrerpolicy="no-referrer">
 
     <style>
         * {
@@ -18,7 +22,8 @@
 html, body, * {
   font-family: 'Quicksand', sans-serif;
 }
-    body {
+ 
+body {
 
     line-height: 1.6;
   
@@ -40,11 +45,11 @@ html, body, * {
         }
         .container{
   max-width:1200px;
-  margin:2rem auto;
+ margin: auto;
   background:#fff;
   min-height:100vh;
-  box-shadow:0 0 30px rgba(0,0,0,.1);
-  border-radius:24px;
+
+  /* border-radius:24px; */
   overflow:hidden;           /* <-- key */
 }
 
@@ -66,7 +71,12 @@ html, body, * {
 .header-photo{
   width: 100%;
   height: 100%;
-  object-fit: cover;     /* fills the box */
+  object-fit: cover;   
+  border-radius: 15px;  /* fills the box */
+  background: #e0e0e0;
+background: #e0e0e0;
+box-shadow: 0 0 10px #667eea75;
+         
   object-position: center;
   display: block;
 }
@@ -101,6 +111,7 @@ html, body, * {
   width:10vh;    /* adjust size if needed */
   height:auto;
   border-radius: 20px;
+  
 }
 
 
@@ -128,9 +139,9 @@ html, body, * {
         }
 
         .hero-title {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: #2c3e50;
-            margin-bottom: 1rem;
+       
             font-weight: 300;
             text-transform: capitalize;
         }
@@ -150,9 +161,9 @@ html, body, * {
         }
 
         .stat-card {
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea, #202749);
             color: white;
-            padding: 2rem;
+            padding: 1rem;
             border-radius: 15px;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
@@ -208,7 +219,7 @@ html, body, * {
             border: 1px solid #e9ecef;
             border-radius: 15px;
             padding: 2rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.28);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -261,6 +272,7 @@ html, body, * {
             background: #f8f9fa;
             padding: 3rem 2rem;
             border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.28);
             margin: 3rem 0;
             text-align: center;
         }
@@ -333,7 +345,7 @@ html, body, * {
         .disease-icon {
             width: 80px;
             height: 80px;
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea, #202749);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -352,10 +364,19 @@ html, body, * {
 
         /* About Section */
         .about-section {
-            background: #667eea;
-            color: white;
+           background:#f8f9fa;
+            color: #2c3e50;
             padding: 3rem 2rem;
             border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.28);
+            margin: 3rem 0;
+        }
+          .about2-section {
+               background: linear-gradient(135deg, #667eea, #202749);
+            color: #ffffff;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.28);
             margin: 3rem 0;
         }
 
@@ -365,16 +386,25 @@ html, body, * {
             gap: 3rem;
         }
 
-        .about-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
+        /* --- equal vertical gaps inside the about block --- */
+.about-content{
+    display:flex;              /* vertical stack */
+    flex-direction:column;
+    gap:2rem;                  /* ONE place to control spacing */
+}
 
-        .about-content p {
-            opacity: 0.9;
-            line-height: 1.8;
-        }
+/* headline a bit larger but now inherits the gap so no manual margin */
+.about-content h3{
+    font-size:2rem;
+    margin:0;
+}
 
+/* paragraphs lose their hard‑coded bottom margin – gap does the work */
+.about-content p{
+    margin:0;
+    line-height:1.8;
+    opacity:.9;
+}
         /* Benefits */
         .benefits-section {
             margin: 4rem 0;
@@ -414,13 +444,15 @@ html, body, * {
             }
 
             .main-content {
-                padding: 2rem 1rem;
+                padding: 1rem;
             }
 
             .hero-title {
+                font-size: 1.5rem;
+            }
+            .animated-underline{
                 font-size: 2rem;
             }
-
           
 
             .contact-info {
@@ -547,7 +579,9 @@ html, body, * {
         /* animated underline */
 .animated-underline {
   position: relative;
+  text-transform: capitalize;
   display: inline-block;
+  font-size: 2.5rem;
 }
 
 /* the line */
@@ -574,8 +608,7 @@ border-radius:3px;
 /* CTA button */
 .cta-button{
   display:inline-block;
-  margin-top:1.5rem;
-   margin-bottom:1.5rem;
+  margin: 2rem auto; /* vertical spacing + horizontal centering */
   padding:0.8rem 2rem;
   font-size:1rem;
   font-weight:600;
@@ -599,6 +632,7 @@ border-radius:3px;
   border-color:#667eea;
 }
 
+
 /* keyframes for pumping + shadow glow */
 @keyframes pumpGlow{
   0%   {transform:scale(1);   box-shadow:0 0 0 0 #667eea00;}
@@ -613,6 +647,7 @@ border-radius:3px;
   aspect-ratio:1 / 1;                 /* <— square shape */
   overflow:hidden;
   display:flex;
+  scale:1;
   align-items:center;
   border-radius: 15px;
   justify-content:center;
@@ -661,7 +696,7 @@ border-radius:3px;
 
         /* User Info Card */
         .user-info-card {
-            background: linear-gradient(135deg, #667eea, #667eea);
+          background: linear-gradient(135deg, #667eea, #202749);
             color: white;
             padding: 2.5rem;
             border-radius: 20px;
@@ -729,13 +764,39 @@ border-radius:3px;
     color: white;
     box-shadow: 0 0 25px 10px rgba(255, 255, 255, 0.9); /* keep strong white shadow */
 }
-       
+/* WhatsApp floating button */
+.whatsapp-float{
+  position:fixed;
+  bottom:22px;
+  right:22px;
+  width:58px;
+  height:58px;
+  background:#25D366;
+  color:#fff;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 8px 25px rgba(0,0,0,.25);
+  z-index:1000;
+  transition:transform .25s;
 
+  text-decoration:none;            /* <‑‑ remove underline */
+}
+.whatsapp-float:hover{transform:scale(1.05);}
+.whatsapp-float i   {font-size:28px;line-height:0;color:#fff;}
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
+      <!-- Navigation -->
+<nav class="nav">
+  <a href="https://www.veritasint.com/myhealthscore/" class="brand-link">
+    <img src="https://www.veritasint.com/wp-content/uploads/2025/05/VeritasFZ-1.png"
+         alt="myHealthScore icon" class="brand-icon">
+  </a>
+</nav>
+
       <header class="header">
             <img
                 class="header-photo"
@@ -747,13 +808,6 @@ border-radius:3px;
 </header>
 
  <!-- Navigation -->
-<!-- Navigation -->
-<nav class="nav">
-  <a href="https://www.veritasint.com/myhealthscore/" class="brand-link">
-    <img src="https://www.veritasint.com/wp-content/uploads/2025/05/VeritasFZ-1.png"
-         alt="myHealthScore icon" class="brand-icon">
-  </a>
-</nav>
 
 
 
@@ -763,8 +817,9 @@ border-radius:3px;
             <section class="hero-section fade-in">
                 <h1 class="hero-title">
                 Know your hidden disease risks in <br>
-                <b class="animated-underline"><b>one simple test</b></b>
-                </h1>
+           
+                </h1>     
+                <b class="animated-underline"><b>one simple test</b></b> <br>
 <a href="https://wa.me/9613110898?text=Hi%2C%20I%20am%20interested%20in%20your%20myHealthScore%20test.%20How%20can%20I%20start%3F"
  class="cta-button">Explore How This Test Could Help You</a>
                 <p class="hero-subtitle">myHealthScore is the genetic screening test that provides information about the risk of presenting with common multifactorial diseases. The test determines the polygenic risk, which was previously unperceived, enabling the detection of a greater number of people at risk.</p>
@@ -797,7 +852,7 @@ border-radius:3px;
                         </svg>
                     </div>
                     <div class="stat-number">1 in 4</div>
-                    <div class="stat-text">people with coronary artery disease is undetected through the evaluation of clinical risk factors</div>
+                    <div class="stat-text">people with coronary artery disease is undetected through the evaluation of risk factors</div>
                 </div>
                 <div class="stat-card fade-in">
                     <div class="stat-icons">
@@ -910,8 +965,7 @@ border-radius:3px;
            <!-- Diseases Section -->
             <section class="diseases-section">
                 <h2 class="section-title">Which diseases are included in myHealthScore?</h2>
-                <p style="text-align: center; color: #666; margin-bottom: 2rem;">The software for the analysis is CE-marked and enables the risk evaluation of presenting different pathologies, providing the specialist with important information for your healthcare:</p>
-                
+               
                 <div class="diseases-grid">
                     <div class="disease-card fade-in">
                           <div class="disease-icon">
@@ -961,7 +1015,7 @@ border-radius:3px;
 
 <!-- User Information Card -->
             <div class="user-info-card">
-                <h3> Get Your Personalized Risk Report</h3>
+                <h3> Start By Getting Your Personalized Risk Report</h3>
                 <form id="userForm">
                     <div class="form-group">
                         <label for="name">Full Name:</label>
@@ -1011,158 +1065,23 @@ border-radius:3px;
                         <p>In these cases, the genetic risk is not usually associated with a single variant but with thousands or millions of common variants throughout the genome. This is known as a polygenic risk.</p>
                         
                         <!-- Polygenic Risk Visualization -->
-                        <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 10px; margin: 2rem 0; text-align: center;">
-                            <svg width="100%" height="120" viewBox="0 0 400 120" style="max-width: 400px;">
-                                <!-- DNA strands visualization -->
-                                <g transform="translate(20, 60)">
-                                    <!-- Background variants (gray) -->
-                                    <circle cx="10" cy="-20" r="3" fill="#ddd"/>
-                                    <line x1="10" y1="-17" x2="10" y2="17" stroke="#ddd" stroke-width="2"/>
-                                    <circle cx="10" cy="20" r="3" fill="#ddd"/>
-                                    
-                                    <circle cx="30" cy="-15" r="3" fill="#ddd"/>
-                                    <line x1="30" y1="-12" x2="30" y2="12" stroke="#ddd" stroke-width="2"/>
-                                    <circle cx="30" cy="15" r="3" fill="#ddd"/>
-                                    
-                                    <circle cx="50" cy="-25" r="3" fill="#ddd"/>
-                                    <line x1="50" y1="-22" x2="50" y2="22" stroke="#ddd" stroke-width="2"/>
-                                    <circle cx="50" cy="25" r="3" fill="#ddd"/>
-                                    
-                                    <!-- Risk variants (blue) -->
-                                    <circle cx="80" cy="-20" r="4" fill="#4ecdc4"/>
-                                    <line x1="80" y1="-16" x2="80" y2="16" stroke="#4ecdc4" stroke-width="3"/>
-                                    <circle cx="80" cy="20" r="4" fill="#4ecdc4"/>
-                                    
-                                    <circle cx="100" cy="-15" r="4" fill="#4ecdc4"/>
-                                    <line x1="100" y1="-11" x2="100" y2="11" stroke="#4ecdc4" stroke-width="3"/>
-                                    <circle cx="100" cy="15" r="4" fill="#4ecdc4"/>
-                                    
-                                    <circle cx="120" cy="-25" r="4" fill="#4ecdc4"/>
-                                    <line x1="120" y1="-21" x2="120" y2="21" stroke="#4ecdc4" stroke-width="3"/>
-                                    <circle cx="120" cy="25" r="4" fill="#4ecdc4"/>
-                                    
-                                    <circle cx="140" cy="-18" r="4" fill="#4ecdc4"/>
-                                    <line x1="140" y1="-14" x2="140" y2="14" stroke="#4ecdc4" stroke-width="3"/>
-                                    <circle cx="140" cy="18" r="4" fill="#4ecdc4"/>
-                                    
-                                    <circle cx="160" cy="-22" r="4" fill="#4ecdc4"/>
-                                    <line x1="160" y1="-18" x2="160" y2="18" stroke="#4ecdc4" stroke-width="3"/>
-                                    <circle cx="160" cy="22" r="4" fill="#4ecdc4"/>
-                                    
-                                    <!-- More background variants -->
-                                    <circle cx="190" cy="-15" r="3" fill="#ddd"/>
-                                    <line x1="190" y1="-12" x2="190" y2="12" stroke="#ddd" stroke-width="2"/>
-                                    <circle cx="190" cy="15" r="3" fill="#ddd"/>
-                                    
-                                    <circle cx="210" cy="-20" r="3" fill="#ddd"/>
-                                    <line x1="210" y1="-17" x2="210" y2="17" stroke="#ddd" stroke-width="2"/>
-                                    <circle cx="210" cy="20" r="3" fill="#ddd"/>
-                                    
-                                    <!-- More risk variants -->
-                                    <circle cx="240" cy="-18" r="4" fill="#4ecdc4"/>
-                                    <line x1="240" y1="-14" x2="240" y2="14" stroke="#4ecdc4" stroke-width="3"/>
-                                    <circle cx="240" cy="18" r="4" fill="#4ecdc4"/>
-                                    
-                                    <circle cx="270" cy="-15" r="3" fill="#ddd"/>
-                                    <line x1="270" y1="-12" x2="270" y2="12" stroke="#ddd" stroke-width="2"/>
-                                    <circle cx="270" cy="15" r="3" fill="#ddd"/>
-                                    
-                                    <circle cx="290" cy="-25" r="3" fill="#ddd"/>
-                                    <line x1="290" y1="-22" x2="290" y2="22" stroke="#ddd" stroke-width="2"/>
-                                    <circle cx="290" cy="25" r="3" fill="#ddd"/>
-                                    
-                                    <circle cx="320" cy="-18" r="4" fill="#4ecdc4"/>
-                                    <line x1="320" y1="-14" x2="320" y2="14" stroke="#4ecdc4" stroke-width="3"/>
-                                    <circle cx="320" cy="18" r="4" fill="#4ecdc4"/>
-                                    
-                                    <circle cx="350" cy="-20" r="3" fill="#ddd"/>
-                                    <line x1="350" y1="-17" x2="350" y2="17" stroke="#ddd" stroke-width="2"/>
-                                    <circle cx="350" cy="20" r="3" fill="#ddd"/>
-                                </g>
-                            </svg>
-                        </div>
-                        
-                        <p>Knowing the genetic risk is useful to focus on other modificable risk factors with the aim of prevention.</p>
-                    </div>
-                    <div class="about-content">
-                        <h3>Why is it important?</h3>
-                        
-                        <!-- Risk Factors Visualization matching the brochure -->
-                        <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 15px; margin: 2rem 0; position: relative;">
-                            <div style="text-align: center; margin-bottom: 2rem;">
-                                <div style="display: inline-block; background: rgba(255,255,255,0.2); padding: 1rem 2rem; border-radius: 25px; margin-bottom: 1.5rem;">
-                                    <div style="color: #ffffff; font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem;">my</div>
-                                    <div style="color: white; font-size: 2rem; font-weight: bold;">Health</div>
-                                    <div style="color: #ffffff; font-size: 2rem; font-weight: bold;">Score</div>
-                                    <div style="color: #4ecdc4; font-size: 2rem; margin-top: 0.5rem;">+</div>
-                                </div>
-                                
-                                <div style="color: #ffffff; font-weight: bold; font-size: 1.1rem; margin-bottom: 1.5rem;">RISK OF DISEASE</div>
-                            </div>
-                            
-                            
-                            <!-- Risk factors grid matching the brochure layout -->
-                            <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; margin-bottom: 1rem;">
-                                <div style="text-align: center;">
-                                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🍔</div>
-                                    <div style="font-size: 0.8rem;">Poor eating habits</div>
-                                </div>
-                                <div style="text-align: center;">
-                                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🍷</div>
-                                    <div style="font-size: 0.8rem;">Alcohol</div>
-                                </div>
-                                <div style="text-align: center;">
-                                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">👨‍👩‍👧‍👦</div>
-                                    <div style="font-size: 0.8rem;">Age</div>
-                                </div>
-                                <div style="text-align: center;">
-                                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">💉</div>
-                                    <div style="font-size: 0.8rem;">Diabetes</div>
-                                </div>
-                                <div style="text-align: center;">
-                                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚖️</div>
-                                    <div style="font-size: 0.8rem;">Overweight</div>
-                                </div>
-                            </div>
-                            
-                            <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem;">
-                                <div style="text-align: center;">
-                                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🚬</div>
-                                    <div style="font-size: 0.8rem;">Tobacco</div>
-                                </div>
-                                <div style="text-align: center;">
-                                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">📈</div>
-                                    <div style="font-size: 0.8rem;">Hypertension</div>
-                                </div>
-                                <div style="text-align: center;">
-                                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚪</div>
-                                    <div style="font-size: 0.8rem;">Hormones</div>
-                                </div>
-                                <div style="text-align: center;">
-                                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🌍</div>
-                                    <div style="font-size: 0.8rem;">Environment</div>
-                                </div>
-                                <div style="text-align: center;">
-                                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🧪</div>
-                                    <div style="font-size: 0.8rem;">Hyperlipidemia</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-<div class="wp-block-genesis-blocks-gb-container gb-layout-hero-1 gb-block-container alignfull">
+                       <div class="wp-block-genesis-blocks-gb-container gb-layout-hero-1 gb-block-container alignfull">
   <div class="gb-container-inside">
     <div class="gb-container-image-wrap">
       <img src="images/giphy.webp" alt="" class="gb-container-image">
     </div>
 
     <div class="gb-container-content">
-      <h2 class="wp-block-heading">Improving healthcare through genetics</h2>
-      <p>Our test based on whole-exome and genome sequencing provides the interpretation of extensive genetic information that can be further analyzed in the future.</p>
-    </div>
+        </div>
   </div>
 </div>
+                        
+                        <p>Knowing the genetic risk is useful to focus on other modificable risk factors with the aim of prevention.</p>
+                    </div>
+                 
+                </div>
+            </section>
+
 
             <!-- Benefits Section -->
             <section class="benefits-section">
@@ -1179,7 +1098,7 @@ border-radius:3px;
             </section>
 
             <!-- About Veritas -->
-            <section class="about-section">
+            <section class="about2-section">
                 <div class="about-grid">
                     <div class="about-content">
                         <h3>About Veritas</h3>
@@ -1187,14 +1106,18 @@ border-radius:3px;
                         <p>Using state-of-the-art technologies and the highest safety standards, Veritas Genetics helps individuals, healthcare professionals and institutions worldwide to understand and anticipate genetic risks, enabling more informed and proactive health decisions.</p>
                         <p>With a focus on innovation and accessibility, Veritas Genetics transforms the way we understand and care for health at every stage of life.</p>
                     </div>
-                    <div class="about-content">
-                        <h3>How do I start?</h3>
-                        <p>Getting started with myHealthScore is simple and straightforward. Our comprehensive genetic screening test provides valuable insights into your health risks, empowering you to make informed decisions about your healthcare journey.</p>
-                        <p>Contact our team today to learn more about how myHealthScore can benefit you and your family's health management strategy.</p>
-                    </div>
                 </div>
             </section>
-        </main>
+
+      <section class="hero-section fade-in">
+                <h1 class="hero-title">
+                Start Today From The <br>
+           
+                </h1>     
+                <b class="animated-underline"><b>Your Home</b></b><br>
+<a href="https://wa.me/9613110898?text=Hi%2C%20I%20am%20interested%20in%20your%20myHealthScore%20test.%20How%20can%20I%20start%3F"
+ class="cta-button">Contact us</a>
+            </section>  </main>
     </div>
 
     <script>
@@ -1369,5 +1292,11 @@ Please contact me to schedule my genetic testing appointment.`;
             observer.observe(el);
         });
     </script>
+<a href="https://wa.me/9613110898?text=Hi%2C%20I%20am%20interested%20in%20your%20myHealthScore%20test.%20How%20can%20I%20start%3F" class="whatsapp-float"
+   target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+
 </body>
 </html>
