@@ -1082,42 +1082,40 @@ border-radius:3px;
                 </p>
             </section>
 
-<!-- User Information Card -->
-          <!-- ===== User Info Card ===== -->
-          <!-- ===== User Info Card ===== -->
+<!-- ===== User Info Card ===== -->
 <div class="user-info-card">
   <h3>Start By Getting Your Personalized Risk Report</h3>
 
   <form id="userForm">
-    <!-- Full name -->
+    <!-- Full name (not required) -->
     <div class="form-group">
       <label for="name">Full Name:</label>
-      <input type="text" id="name" name="name" required>
+      <input type="text" id="name" name="name">
     </div>
 
-    <!-- Date of birth (separate selects) -->
+    <!-- Date of birth: YEAR → MONTH → DAY (not required) -->
     <div class="form-group">
       <label>Date of Birth:</label>
       <div style="display:flex; gap:.5rem;">
-        <select id="dobDay" name="dobDay" required>
-          <option value="" disabled selected>Day</option>
+        <select id="dobYear" name="dobYear">
+          <option value="" selected>Year</option>
           <!-- filled by JS -->
         </select>
-        <select id="dobMonth" name="dobMonth" required>
-          <option value="" disabled selected>Month</option>
+        <select id="dobMonth" name="dobMonth">
+          <option value="" selected>Month</option>
           <!-- filled by JS -->
         </select>
-        <select id="dobYear" name="dobYear" required>
-          <option value="" disabled selected>Year</option>
+        <select id="dobDay" name="dobDay">
+          <option value="" selected>Day</option>
           <!-- filled by JS -->
         </select>
       </div>
     </div>
 
-    <!-- Referring doctor -->
+    <!-- Referring doctor (not required) -->
     <div class="form-group">
       <label for="doctor">Referring Doctor's Name:</label>
-      <input type="text" id="doctor" name="doctor" placeholder="Enter doctor's name" required>
+      <input type="text" id="doctor" name="doctor" placeholder="Enter doctor's name">
     </div>
 
     <button type="submit" class="cta2-button">
@@ -1125,6 +1123,7 @@ border-radius:3px;
     </button>
   </form>
 </div>
+
 
 
 
@@ -1344,19 +1343,16 @@ border-radius:3px;
             });
         });
     </script>
-   <script>
-/* ---------- Helpers to populate DOB selects ---------- */
+<script>
+/* ---------- DOB selects: populate & sync ---------- */
 const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
 function daysInMonth(year, monthIndex /* 0-11 */) {
-  return new Date(year, monthIndex + 1, 0).getDate();
+  return new Date(year || 2000, (monthIndex ?? 0) + 1, 0).getDate(); // safe default
 }
 
-function populateYears(select, minAge = 18, maxAge = 100) {
-  const now = new Date();
-  const latestYear = now.getFullYear() - minAge;
-  const earliestYear = now.getFullYear() - maxAge;
-  for (let y = latestYear; y >= earliestYear; y--) {
+function populateYears(select, lastYear = new Date().getFullYear(), firstYear = 1900) {
+  for (let y = lastYear; y >= firstYear; y--) {
     const opt = document.createElement('option');
     opt.value = String(y);
     opt.textContent = String(y);
@@ -1367,16 +1363,15 @@ function populateYears(select, minAge = 18, maxAge = 100) {
 function populateMonths(select) {
   monthNames.forEach((name, i) => {
     const opt = document.createElement('option');
-    opt.value = String(i + 1); // 1-12
+    opt.value = String(i + 1); // 1..12
     opt.textContent = name;
     select.appendChild(opt);
   });
 }
 
 function populateDays(select, year, monthIndex) {
-  // preserve selected day if possible
   const prev = select.value;
-  select.innerHTML = '<option value="" disabled selected>Day</option>';
+  select.innerHTML = '<option value="" selected>Day</option>';
   if (!year || !Number.isInteger(monthIndex)) return;
   const count = daysInMonth(year, monthIndex);
   for (let d = 1; d <= count; d++) {
@@ -1388,32 +1383,22 @@ function populateDays(select, year, monthIndex) {
   if (prev && Number(prev) <= count) select.value = prev;
 }
 
-function calcAge(day, month /*1-12*/, year) {
-  const today = new Date();
-  let age = today.getFullYear() - year;
-  const hasHadBirthday =
-    (today.getMonth() + 1 > month) ||
-    (today.getMonth() + 1 === month && today.getDate() >= day);
-  if (!hasHadBirthday) age--;
-  return age;
-}
-
 document.addEventListener('DOMContentLoaded', () => {
-  const daySel   = document.getElementById('dobDay');
-  const monthSel = document.getElementById('dobMonth');
   const yearSel  = document.getElementById('dobYear');
+  const monthSel = document.getElementById('dobMonth');
+  const daySel   = document.getElementById('dobDay');
 
-  populateMonths(monthSel);
-  populateYears(yearSel);
+  populateYears(yearSel);   // current year → 1900
+  populateMonths(monthSel); // Jan..Dec
 
   const updateDays = () => {
     const y = Number(yearSel.value);
     const mIndex = Number(monthSel.value) ? Number(monthSel.value) - 1 : undefined;
-    if (y && mIndex >= 0) populateDays(daySel, y, mIndex);
+    populateDays(daySel, y, mIndex);
   };
 
-  monthSel.addEventListener('change', updateDays);
   yearSel.addEventListener('change', updateDays);
+  monthSel.addEventListener('change', updateDays);
 });
 
 /* ---------- Form submission ---------- */
@@ -1422,37 +1407,28 @@ document.getElementById('userForm').addEventListener('submit', e => {
 
   const name   = document.getElementById('name').value.trim();
   const doctor = document.getElementById('doctor').value.trim();
-  const d = Number(document.getElementById('dobDay').value);
-  const m = Number(document.getElementById('dobMonth').value);
-  const y = Number(document.getElementById('dobYear').value);
+  const y = document.getElementById('dobYear').value;
+  const m = document.getElementById('dobMonth').value;
+  const d = document.getElementById('dobDay').value;
 
-  if (!name || !doctor || !d || !m || !y) {
-    alert('Please complete all required fields.');
-    return;
+  const orNA = v => v ? v : 'Not provided';
+
+  // Format DOB only if all parts selected; otherwise "Not provided"
+  let dobStr = 'Not provided';
+  if (y && m && d) {
+    // Basic validity check (should already be valid thanks to day list)
+    const dt = new Date(Number(y), Number(m) - 1, Number(d));
+    const valid = dt.getFullYear() == y && (dt.getMonth() + 1) == Number(m) && dt.getDate() == Number(d);
+    dobStr = valid
+      ? `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}` // YYYY-MM-DD
+      : 'Invalid date';
   }
-
-  // Validate date
-  const dt = new Date(y, m - 1, d);
-  if (dt.getFullYear() !== y || dt.getMonth() !== m - 1 || dt.getDate() !== d) {
-    alert('Please enter a valid date of birth.');
-    return;
-  }
-
-  // OPTIONAL: enforce 18–100 years old (remove this block if not needed)
-  const age = calcAge(d, m, y);
-  if (age < 18 || age > 100) {
-    alert('This service is available for ages 18 to 100.');
-    return;
-  }
-
-  // Format DOB as DD-MMM-YYYY
-  const dobStr = `${String(d).padStart(2,'0')}-${monthNames[m-1]}-${y}`;
 
   const msg = `Hi! I am interested in your myHealthScore test. Here are my details:
 
-Name: ${name}
+Name: ${orNA(name)}
 Date of Birth: ${dobStr}
-Referring Doctor: ${doctor}
+Referring Doctor: ${orNA(doctor)}
 
 Please contact me to schedule my genetic testing appointment.`;
 
@@ -1462,7 +1438,8 @@ Please contact me to schedule my genetic testing appointment.`;
   );
 });
 
-/* ---------- Share on Facebook (unchanged) ---------- */
+/* ---------- (Optional) other code you already have ---------- */
+/* Share on Facebook */
 function shareOnFacebook() {
   const url = window.location.href;
   window.open(
@@ -1472,17 +1449,15 @@ function shareOnFacebook() {
   );
 }
 
-/* ---------- Smooth scrolling (unchanged) ---------- */
+/* Smooth scrolling for in-page links */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', e => {
     e.preventDefault();
-    document.querySelector(anchor.getAttribute('href')).scrollIntoView({
-      behavior: 'smooth'
-    });
+    document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
   });
 });
 
-/* ---------- Fade-in animation guard (only if observer exists) ---------- */
+/* Fade-in animation only if an IntersectionObserver named `observer` exists */
 if (typeof observer !== 'undefined') {
   document.querySelectorAll('.stat-card, .user-info-card, .social-proof, .share-section')
     .forEach(el => {
@@ -1493,6 +1468,7 @@ if (typeof observer !== 'undefined') {
     });
 }
 </script>
+
 
 <script>
 (() => {
