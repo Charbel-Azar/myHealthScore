@@ -785,6 +785,75 @@ border-radius:3px;
 }
 .whatsapp-float:hover{transform:scale(1.05);}
 .whatsapp-float i   {font-size:28px;line-height:0;color:#fff;}
+
+/* Floating Share button (left) */
+.share-float{
+  position:fixed;
+  bottom:22px;
+  left:22px;
+  width:58px;
+  height:58px;
+  background:#e63946;           /* red */
+  color:#fff;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 8px 25px rgba(0,0,0,.25);
+  z-index:1000;
+  transition:transform .25s;
+  text-decoration:none;          /* no underline */
+}
+.share-float:hover{ transform:scale(1.05); }
+.share-float i{ font-size:26px; line-height:0; color:#fff; }
+
+/* Fallback share panel */
+.share-panel{
+  position:fixed;
+  bottom:88px;                   /* just above the button */
+  left:22px;
+  background:#fff;
+  border-radius:14px;
+  padding:.6rem;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+  z-index:1001;
+  width:220px;
+  display:none;
+}
+.share-panel.open{ display:block; animation:fadeInUp .18s ease; }
+
+.share-option{
+  display:flex;
+  align-items:center;
+  gap:.6rem;
+  width:100%;
+  border:0;
+  background:transparent;
+  padding:.55rem .6rem;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+  color:#2c3e50;
+}
+.share-option:hover{ background:#f2f4f8; }
+.share-option i{ width:20px; text-align:center; }
+
+/* small toast for "copied" */
+.copy-toast{
+  position:fixed;
+  bottom:160px;
+  left:22px;
+  background:#2c3e50;
+  color:#fff;
+  padding:.4rem .6rem;
+  border-radius:8px;
+  font-size:.85rem;
+  opacity:0;
+  transform:translateY(6px);
+  transition:all .25s ease;
+  z-index:1002;
+}
+.copy-toast.show{ opacity:1; transform:translateY(0); }
     </style>
 </head>
 <body>
@@ -1014,38 +1083,50 @@ border-radius:3px;
             </section>
 
 <!-- User Information Card -->
-            <div class="user-info-card">
-                <h3> Start By Getting Your Personalized Risk Report</h3>
-                <form id="userForm">
-                    <div class="form-group">
-                        <label for="name">Full Name:</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="age">Age:</label>
-                        <input type="number" id="age" name="age" min="18" max="100" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="gender">Gender:</label>
-                        <select id="gender" name="gender" required>
-                            <option value="">Select Gender</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="doctor">Referring Doctor's Name:</label>
-                        <input type="text" id="doctor" name="doctor" placeholder="Enter doctor's name" required>
-                    </div>
-                    
-                    <button type="submit" class="cta2-button">
-                     Get My Health Score Now!
-                    </button>
-                </form>
-            </div>
+          <!-- ===== User Info Card ===== -->
+          <!-- ===== User Info Card ===== -->
+<div class="user-info-card">
+  <h3>Start By Getting Your Personalized Risk Report</h3>
+
+  <form id="userForm">
+    <!-- Full name -->
+    <div class="form-group">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+
+    <!-- Date of birth (separate selects) -->
+    <div class="form-group">
+      <label>Date of Birth:</label>
+      <div style="display:flex; gap:.5rem;">
+        <select id="dobDay" name="dobDay" required>
+          <option value="" disabled selected>Day</option>
+          <!-- filled by JS -->
+        </select>
+        <select id="dobMonth" name="dobMonth" required>
+          <option value="" disabled selected>Month</option>
+          <!-- filled by JS -->
+        </select>
+        <select id="dobYear" name="dobYear" required>
+          <option value="" disabled selected>Year</option>
+          <!-- filled by JS -->
+        </select>
+      </div>
+    </div>
+
+    <!-- Referring doctor -->
+    <div class="form-group">
+      <label for="doctor">Referring Doctor's Name:</label>
+      <input type="text" id="doctor" name="doctor" placeholder="Enter doctor's name" required>
+    </div>
+
+    <button type="submit" class="cta2-button">
+      Get myHealthScore Now!
+    </button>
+  </form>
+</div>
+
+
 
             <!-- Risk Chart -->
             <section class="chart-section">
@@ -1117,6 +1198,27 @@ border-radius:3px;
                     </div>
                 </div>
             </section>
+<!-- Floating Share (left) -->
+<a id="shareBtn" class="share-float" href="#" aria-label="Share this page">
+  <i class="fa-solid fa-heart"></i>
+</a>
+
+<!-- Fallback quick-share panel -->
+<div id="sharePanel" class="share-panel" aria-hidden="true">
+  <button class="share-option" data-action="whatsapp">
+    <i class="fa-brands fa-whatsapp"></i><span>WhatsApp</span>
+  </button>
+  <button class="share-option" data-action="facebook">
+    <i class="fa-brands fa-facebook-f"></i><span>Facebook</span>
+  </button>
+  <button class="share-option" data-action="telegram">
+    <i class="fa-brands fa-telegram"></i><span>Telegram</span>
+  </button>
+  <button class="share-option" data-action="copy">
+    <i class="fa-solid fa-link"></i><span>Copy link</span>
+  </button>
+</div>
+<div id="copyToast" class="copy-toast">Link copied</div>
 
        </main>
     </div>
@@ -1242,57 +1344,220 @@ border-radius:3px;
             });
         });
     </script>
-    <script>
-        // Form submission handler
-        document.getElementById('userForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const age = document.getElementById('age').value;
-            const gender = document.getElementById('gender').value;
-            const doctor = document.getElementById('doctor').value;
-            
-            const message = `Hi! I am interested in your myHealthScore test. Here are my details:
-            
+   <script>
+/* ---------- Helpers to populate DOB selects ---------- */
+const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+function daysInMonth(year, monthIndex /* 0-11 */) {
+  return new Date(year, monthIndex + 1, 0).getDate();
+}
+
+function populateYears(select, minAge = 18, maxAge = 100) {
+  const now = new Date();
+  const latestYear = now.getFullYear() - minAge;
+  const earliestYear = now.getFullYear() - maxAge;
+  for (let y = latestYear; y >= earliestYear; y--) {
+    const opt = document.createElement('option');
+    opt.value = String(y);
+    opt.textContent = String(y);
+    select.appendChild(opt);
+  }
+}
+
+function populateMonths(select) {
+  monthNames.forEach((name, i) => {
+    const opt = document.createElement('option');
+    opt.value = String(i + 1); // 1-12
+    opt.textContent = name;
+    select.appendChild(opt);
+  });
+}
+
+function populateDays(select, year, monthIndex) {
+  // preserve selected day if possible
+  const prev = select.value;
+  select.innerHTML = '<option value="" disabled selected>Day</option>';
+  if (!year || !Number.isInteger(monthIndex)) return;
+  const count = daysInMonth(year, monthIndex);
+  for (let d = 1; d <= count; d++) {
+    const opt = document.createElement('option');
+    opt.value = String(d);
+    opt.textContent = String(d);
+    select.appendChild(opt);
+  }
+  if (prev && Number(prev) <= count) select.value = prev;
+}
+
+function calcAge(day, month /*1-12*/, year) {
+  const today = new Date();
+  let age = today.getFullYear() - year;
+  const hasHadBirthday =
+    (today.getMonth() + 1 > month) ||
+    (today.getMonth() + 1 === month && today.getDate() >= day);
+  if (!hasHadBirthday) age--;
+  return age;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const daySel   = document.getElementById('dobDay');
+  const monthSel = document.getElementById('dobMonth');
+  const yearSel  = document.getElementById('dobYear');
+
+  populateMonths(monthSel);
+  populateYears(yearSel);
+
+  const updateDays = () => {
+    const y = Number(yearSel.value);
+    const mIndex = Number(monthSel.value) ? Number(monthSel.value) - 1 : undefined;
+    if (y && mIndex >= 0) populateDays(daySel, y, mIndex);
+  };
+
+  monthSel.addEventListener('change', updateDays);
+  yearSel.addEventListener('change', updateDays);
+});
+
+/* ---------- Form submission ---------- */
+document.getElementById('userForm').addEventListener('submit', e => {
+  e.preventDefault();
+
+  const name   = document.getElementById('name').value.trim();
+  const doctor = document.getElementById('doctor').value.trim();
+  const d = Number(document.getElementById('dobDay').value);
+  const m = Number(document.getElementById('dobMonth').value);
+  const y = Number(document.getElementById('dobYear').value);
+
+  if (!name || !doctor || !d || !m || !y) {
+    alert('Please complete all required fields.');
+    return;
+  }
+
+  // Validate date
+  const dt = new Date(y, m - 1, d);
+  if (dt.getFullYear() !== y || dt.getMonth() !== m - 1 || dt.getDate() !== d) {
+    alert('Please enter a valid date of birth.');
+    return;
+  }
+
+  // OPTIONAL: enforce 18–100 years old (remove this block if not needed)
+  const age = calcAge(d, m, y);
+  if (age < 18 || age > 100) {
+    alert('This service is available for ages 18 to 100.');
+    return;
+  }
+
+  // Format DOB as DD-MMM-YYYY
+  const dobStr = `${String(d).padStart(2,'0')}-${monthNames[m-1]}-${y}`;
+
+  const msg = `Hi! I am interested in your myHealthScore test. Here are my details:
+
 Name: ${name}
-Age: ${age}
-Gender: ${gender}
+Date of Birth: ${dobStr}
 Referring Doctor: ${doctor}
 
 Please contact me to schedule my genetic testing appointment.`;
-            
-            const whatsappUrl = `https://wa.me/9613110898?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-        });
 
-        // Share functions
-        function shareOnFacebook() {
-            const url = window.location.href;
-            const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-            window.open(facebookUrl, '_blank', 'width=600,height=400');
-        }
+  window.open(
+    `https://wa.me/9613110898?text=${encodeURIComponent(msg)}`,
+    '_blank'
+  );
+});
 
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+/* ---------- Share on Facebook (unchanged) ---------- */
+function shareOnFacebook() {
+  const url = window.location.href;
+  window.open(
+    `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+    '_blank',
+    'width=600,height=400'
+  );
+}
 
-       
+/* ---------- Smooth scrolling (unchanged) ---------- */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(anchor.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+});
 
+/* ---------- Fade-in animation guard (only if observer exists) ---------- */
+if (typeof observer !== 'undefined') {
+  document.querySelectorAll('.stat-card, .user-info-card, .social-proof, .share-section')
+    .forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'all 0.6s ease';
+      observer.observe(el);
+    });
+}
+</script>
 
-        // Observe all cards and sections
-        document.querySelectorAll('.stat-card, .user-info-card, .social-proof, .share-section').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.6s ease';
-            observer.observe(el);
-        });
-    </script>
+<script>
+(() => {
+  const shareBtn = document.getElementById('shareBtn');
+  const panel    = document.getElementById('sharePanel');
+  const toast    = document.getElementById('copyToast');
+  const pageUrl  = window.location.href;
+  const pageTitle= document.title;
+
+  function closePanel(){
+    panel.classList.remove('open');
+    panel.setAttribute('aria-hidden','true');
+  }
+
+  shareBtn.addEventListener('click', async (e) => {
+    e.preventDefault();
+    const shareData = { title: pageTitle, text: 'Check this out', url: pageUrl };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+        return; // native share succeeded
+      } catch (err) {
+        // If user cancels, we do nothing; otherwise fall back
+      }
+    }
+    // Fallback panel
+    const willOpen = !panel.classList.contains('open');
+    panel.classList.toggle('open', willOpen);
+    panel.setAttribute('aria-hidden', willOpen ? 'false' : 'true');
+  });
+
+  panel.addEventListener('click', async (e) => {
+    const btn = e.target.closest('.share-option');
+    if (!btn) return;
+
+    const action = btn.dataset.action;
+    if (action === 'whatsapp') {
+      window.open(`https://wa.me/?text=${encodeURIComponent(pageUrl)}`, '_blank', 'noopener');
+    } else if (action === 'facebook') {
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`,
+                  '_blank', 'noopener,width=600,height=460');
+    } else if (action === 'telegram') {
+      window.open(`https://t.me/share/url?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(pageTitle)}`,
+                  '_blank', 'noopener');
+    } else if (action === 'copy') {
+      try {
+        await navigator.clipboard.writeText(pageUrl);
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 1500);
+      } catch (err) { /* ignore */ }
+    }
+    closePanel();
+  });
+
+  // Close on outside click / ESC
+  document.addEventListener('click', (e) => {
+    if (!panel.contains(e.target) && e.target !== shareBtn && !shareBtn.contains(e.target)) {
+      closePanel();
+    }
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePanel(); });
+})();
+</script>
+
 <a href="https://wa.me/9613110898?text=Hi%2C%20I%20am%20interested%20in%20your%20myHealthScore%20test.%20How%20can%20I%20start%3F" class="whatsapp-float"
    target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
   <i class="fa-brands fa-whatsapp"></i>
