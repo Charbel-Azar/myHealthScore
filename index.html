@@ -894,7 +894,7 @@ border-radius:3px;
    onclick="openWhatsApp(PHONE, 'Hi, I am interested in your myHealthScore test. How can I start?'); return false;">
   Explore How This Test Can Help You
 </a>
-                <p class="hero-subtitle">myHealthScore is a simple genetic test that helps you understand your risk for common diseases like heart disease, diabetes, and certain cancers. It looks at many small changes in your DNA to uncover hidden risks that regular check-ups might miss.</p>
+              <p class="hero-subtitle">myHealthScore is a simple genetic test that helps you understand your risk for common diseases like heart disease, diabetes, and certain cancers. It looks at many small changes in your DNA to uncover hidden risks that regular check-ups might miss.</p>
             </section>
 
             <!-- Statistics -->
@@ -1536,38 +1536,43 @@ if (typeof observer !== 'undefined') {
 })();
 </script>
 <script>
-  // ===== WhatsApp opener (Business → Consumer → Web) =====
-  const PHONE = '9613110898'; // your number in full international format, no "+"
+  // One number everywhere
+  const PHONE = '9613110898'; // full international, no "+"
 
-  function openWhatsApp(phone, text) {
-    const n = String(phone || PHONE).replace(/[^\d]/g, '');
+  // Opens WhatsApp without showing the "install Business" box
+  function openWhatsApp(phone = PHONE, text = '') {
+    const n = String(phone).replace(/[^\d]/g, '');
     const msg = encodeURIComponent(text || '');
-    const ua = navigator.userAgent;
-    const isAndroid = /Android/i.test(ua);
-    const isIOS = /iPhone|iPad|iPod/i.test(ua);
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-    if (isAndroid) {
-      // 1) Try WhatsApp Business, 2) fallback to consumer, 3) fallback to web
-      const business = `intent://send/?phone=${n}&text=${msg}#Intent;scheme=whatsapp;package=com.whatsapp.w4b;end`;
-      const consumer = `intent://send/?phone=${n}&text=${msg}#Intent;scheme=whatsapp;package=com.whatsapp;end`;
-      const web      = `https://api.whatsapp.com/send?phone=${n}&text=${msg}`;
-
-      location.href = business;
-      setTimeout(() => { location.href = consumer; }, 800);
-      setTimeout(() => { location.href = web; }, 1600);
+    if (!isMobile) {
+      // Desktop → Web WhatsApp
+      window.open(`https://web.whatsapp.com/send?phone=${n}&text=${msg}`, '_blank', 'noopener');
       return;
     }
 
-    if (isIOS) {
-      // iOS universal link (opens installed WA variant or store)
-      location.href = `https://api.whatsapp.com/send?phone=${n}&text=${msg}`;
-      return;
-    }
+    // Mobile: try native scheme first (no package = no "install" dialog)
+    const scheme = `whatsapp://send?phone=${n}&text=${msg}`;
+    const web    = `https://api.whatsapp.com/send?phone=${n}&text=${msg}`;
 
-    // Desktop: open Web WhatsApp
-    window.open(`https://web.whatsapp.com/send?phone=${n}&text=${msg}`, '_blank', 'noopener');
+    let fallbackTimer;
+
+    // If the app opens, the page goes hidden → cancel fallback
+    const cancelFallback = () => { if (fallbackTimer) clearTimeout(fallbackTimer); };
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) cancelFallback();
+    }, { once: true });
+
+    // Attempt native app
+    location.href = scheme;
+
+    // If nothing handled it, quietly fall back to the web endpoint
+    fallbackTimer = setTimeout(() => {
+      location.href = web;
+    }, 900);
   }
 </script>
+
 
 <a href="#"
    class="whatsapp-float"
@@ -1575,6 +1580,5 @@ if (typeof observer !== 'undefined') {
    onclick="openWhatsApp(PHONE, 'Hi! I want to learn more about myHealthScore.'); return false;">
   <i class="fa-brands fa-whatsapp"></i>
 </a>
-
 </body>
 </html>
