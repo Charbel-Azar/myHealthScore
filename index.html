@@ -889,8 +889,11 @@ border-radius:3px;
            
                 </h1>     
                 <b class="animated-underline"><b>one simple test</b></b> <br>
-<a href="https://wa.me/9613110898?text=Hi%2C%20I%20am%20interested%20in%20your%20myHealthScore%20test.%20How%20can%20I%20start%3F"
- class="cta-button">Explore How This Test Can Help You</a>
+<a href="#"
+   class="cta-button"
+   onclick="openWhatsApp(PHONE, 'Hi, I am interested in your myHealthScore test. How can I start?'); return false;">
+  Explore How This Test Can Help You
+</a>
                 <p class="hero-subtitle">myHealthScore is a simple genetic test that helps you understand your risk for common diseases like heart disease, diabetes, and certain cancers. It looks at many small changes in your DNA to uncover hidden risks that regular check-ups might miss.</p>
             </section>
 
@@ -1183,8 +1186,11 @@ border-radius:3px;
            
                 </h1>     
                 <b class="animated-underline"><b></b></b><br>
-<a href="https://wa.me/9613110898?text=Hi%2C%20I%20am%20interested%20in%20your%20myHealthScore%20test.%20How%20can%20I%20start%3F"
- class="cta-button">Start Today</a>
+<a href="#"
+   class="cta-button"
+   onclick="openWhatsApp(PHONE, 'Hi, I would like to start myHealthScore. What are the next steps?'); return false;">
+  Start Today
+</a>
             </section> 
             <!-- About Veritas -->
             <section class="about2-section">
@@ -1413,14 +1419,12 @@ document.getElementById('userForm').addEventListener('submit', e => {
 
   const orNA = v => v ? v : 'Not provided';
 
-  // Format DOB only if all parts selected; otherwise "Not provided"
   let dobStr = 'Not provided';
   if (y && m && d) {
-    // Basic validity check (should already be valid thanks to day list)
     const dt = new Date(Number(y), Number(m) - 1, Number(d));
     const valid = dt.getFullYear() == y && (dt.getMonth() + 1) == Number(m) && dt.getDate() == Number(d);
     dobStr = valid
-      ? `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}` // YYYY-MM-DD
+      ? `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`
       : 'Invalid date';
   }
 
@@ -1432,10 +1436,8 @@ Referring Doctor: ${orNA(doctor)}
 
 Please contact me to schedule my genetic testing appointment.`;
 
-  window.open(
-    `https://wa.me/9613110898?text=${encodeURIComponent(msg)}`,
-    '_blank'
-  );
+  // === NEW: use the JS opener (works for Business & regular) ===
+  openWhatsApp(PHONE, msg);
 });
 
 /* ---------- (Optional) other code you already have ---------- */
@@ -1533,12 +1535,46 @@ if (typeof observer !== 'undefined') {
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePanel(); });
 })();
 </script>
+<script>
+  // ===== WhatsApp opener (Business → Consumer → Web) =====
+  const PHONE = '9613110898'; // your number in full international format, no "+"
 
-<a href="https://wa.me/9613110898?text=Hi%2C%20I%20am%20interested%20in%20your%20myHealthScore%20test.%20How%20can%20I%20start%3F" class="whatsapp-float"
-   target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  function openWhatsApp(phone, text) {
+    const n = String(phone || PHONE).replace(/[^\d]/g, '');
+    const msg = encodeURIComponent(text || '');
+    const ua = navigator.userAgent;
+    const isAndroid = /Android/i.test(ua);
+    const isIOS = /iPhone|iPad|iPod/i.test(ua);
+
+    if (isAndroid) {
+      // 1) Try WhatsApp Business, 2) fallback to consumer, 3) fallback to web
+      const business = `intent://send/?phone=${n}&text=${msg}#Intent;scheme=whatsapp;package=com.whatsapp.w4b;end`;
+      const consumer = `intent://send/?phone=${n}&text=${msg}#Intent;scheme=whatsapp;package=com.whatsapp;end`;
+      const web      = `https://api.whatsapp.com/send?phone=${n}&text=${msg}`;
+
+      location.href = business;
+      setTimeout(() => { location.href = consumer; }, 800);
+      setTimeout(() => { location.href = web; }, 1600);
+      return;
+    }
+
+    if (isIOS) {
+      // iOS universal link (opens installed WA variant or store)
+      location.href = `https://api.whatsapp.com/send?phone=${n}&text=${msg}`;
+      return;
+    }
+
+    // Desktop: open Web WhatsApp
+    window.open(`https://web.whatsapp.com/send?phone=${n}&text=${msg}`, '_blank', 'noopener');
+  }
+</script>
+
+<a href="#"
+   class="whatsapp-float"
+   aria-label="Chat on WhatsApp"
+   onclick="openWhatsApp(PHONE, 'Hi! I want to learn more about myHealthScore.'); return false;">
   <i class="fa-brands fa-whatsapp"></i>
 </a>
-
 
 </body>
 </html>
