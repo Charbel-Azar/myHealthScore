@@ -917,7 +917,7 @@ border-radius:3px;
                 <b class="animated-underline"><b>one simple test</b></b> <br>
 <a href="#"
    class="cta-button"
-   onclick="openWhatsApp(PHONE, 'Hi, I am interested in your myHealthScore test. How can I start?'); return false;">
+   onclick="gtag('event','whatsapp_click',{label:'Explore CTA',location:'hero'}); openWhatsApp(PHONE, 'Hi, I am interested in your myHealthScore test. How can I start?'); return false;">
   Explore How This Test Can Help You
 </a>
               <p class="hero-subtitle">myHealthScore is a simple genetic test that helps you understand your risk for common diseases like heart disease, diabetes, and certain cancers. It looks at many small changes in your DNA to uncover hidden risks that regular check-ups might miss.</p>
@@ -1115,7 +1115,8 @@ border-radius:3px;
 <div class="user-info-card">
   <h3>Start By Getting Your Personalized Risk Report</h3>
 
-  <form id="userForm">
+  <form id="userForm"
+    onsubmit="gtag('event','lead_submit',{label:'Form Submit',location:'user_info_card'});">
     <!-- Full name (not required) -->
     <div class="form-group">
       <label for="name">Full Name:</label>
@@ -1214,7 +1215,7 @@ border-radius:3px;
                 <b class="animated-underline"><b></b></b><br>
 <a href="#"
    class="cta-button"
-   onclick="openWhatsApp(PHONE, 'Hi, I would like to start myHealthScore. What are the next steps?'); return false;">
+   onclick="gtag('event','whatsapp_click',{label:'Start Today CTA',location:'footer'}); openWhatsApp(PHONE, 'Hi, I would like to start myHealthScore. What are the next steps?'); return false;">
   Start Today
 </a>
             </section> 
@@ -1230,7 +1231,11 @@ border-radius:3px;
                 </div>
             </section>
 <!-- Floating Share (left) -->
-<a id="shareBtn" class="share-float" href="#" aria-label="Share this page">
+<a id="shareBtn"
+   class="share-float"
+   href="#"
+   aria-label="Share this page"
+   onclick="gtag('event','share_click',{label:'Heart Share',location:'floating_left',channel:'panel_open'});">
   <i class="fa-solid fa-heart"></i>
 </a>
 
@@ -1603,7 +1608,7 @@ if (typeof observer !== 'undefined') {
 <a href="#"
    class="whatsapp-float"
    aria-label="Chat on WhatsApp"
-   onclick="openWhatsApp(PHONE, 'Hi! I want to learn more about myHealthScore.'); return false;">
+   onclick="gtag('event','whatsapp_click',{label:'Floating WhatsApp',location:'floating'}); openWhatsApp(PHONE, 'Hi! I want to learn more about myHealthScore.'); return false;">
   <i class="fa-brands fa-whatsapp"></i>
 </a>
 </body>
