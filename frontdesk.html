@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2LEQ4605J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} 
+    gtag('js', new Date());
+    gtag('config', 'G-H2LEQ4605J');
+  </script>
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)}; if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; n.queue=[];t=b.createElement(e);t.async=!0; t.src=v;s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1262147982127732');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1262147982127732&ev=PageView&noscript=1"/></noscript>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Front Desk Patient Guide — myHealthScore</title>
+  <link rel="icon" href="https://www.veritasint.com/wp-content/uploads/2021/02/Favicon.png" sizes="32x32" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" referrerpolicy="no-referrer" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body, * { font-family: 'Quicksand', sans-serif; }
+    body {
+      line-height: 1.6;
+      background: linear-gradient(45deg, #667eea, #b4bde4, #e9b543);
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container{ max-width:1200px; margin:auto; background:#fff; min-height:100vh; overflow:hidden; }
+
+    .nav { background:#f8f9fa; padding:1rem 0; border-bottom:1px solid #e9ecef; display:flex; justify-content:center; align-items:center; }
+    .brand-icon { width:10vh; height:auto; }
+
+    .header{ padding:0; background:none; position:relative; overflow:hidden; height: clamp(220px, 45vh, 520px); }
+    .header-photo{ width:100%; height:100%; object-fit:cover; background:#e0e0e0; box-shadow: 0 0 10px #667eea75; object-position:center; display:block; }
+
+    .main-content { padding: 3rem 2rem; }
+    .hero-section { text-align:center; margin-bottom: 2.5rem; }
+    .hero-title { font-size: 2rem; color:#2c3e50; font-weight: 700; text-transform: none; }
+    .hero-subtitle { font-size: 1.1rem; color:#2c3e50; opacity:.9; max-width:820px; margin:.75rem auto 0; }
+
+    .actions { margin-top:1.25rem; display:flex; gap:.75rem; justify-content:center; flex-wrap:wrap; }
+    .btn { display:inline-flex; align-items:center; gap:.5rem; padding:.8rem 1.2rem; border-radius:50px; border:2px solid #667eea; background:#fff; color:#667eea; font-weight:700; cursor:pointer; text-decoration:none; transition:.25s; }
+    .btn:hover { background:#667eea; color:#fff; box-shadow:0 0 20px 6px #667eea55; }
+
+    .section-title { font-size: 1.6rem; color:#2c3e50; text-align:center; margin: 2.5rem 0 1.25rem; }
+
+    /* Cards & blocks */
+    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:1.25rem; }
+    .card { background:#fff; border:1px solid #e9ecef; border-radius:15px; box-shadow:0 5px 20px rgba(0,0,0,.12); padding:1.25rem 1.25rem 1rem; position:relative; }
+    .card h4 { font-size:1.05rem; color:#2c3e50; margin-bottom:.5rem; }
+
+    .script-block { position:relative; padding:1.25rem 1.25rem 1.1rem; border-left:4px solid #667eea; border-radius:0 12px 12px 0; background:#fff; box-shadow:0 3px 15px rgba(0,0,0,0.1); }
+    .script-text { white-space:pre-wrap; color:#2c3e50; }
+    .copy-btn { position:absolute; top:.75rem; right:.75rem; border:0; background:#f3f4ff; color:#3b44b1; border-radius:10px; padding:.4rem .6rem; font-weight:700; cursor:pointer; transition:.2s; }
+    .copy-btn:hover { background:#667eea; color:#fff; }
+
+    .list { list-style:none; display:flex; flex-direction:column; gap:.75rem; }
+    .list li { background:#fff; border-left:4px solid #667eea; padding:1rem; border-radius:0 10px 10px 0; box-shadow:0 3px 15px rgba(0,0,0,.08); }
+
+    /* Steps */
+    .steps { counter-reset: step; display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:1rem; }
+    .step { background:linear-gradient(135deg, #667eea, #202749); color:#fff; border-radius:14px; padding:1rem 1.1rem; box-shadow:0 10px 30px rgba(102,126,234,.25); }
+    .step::before { counter-increment: step; content: counter(step); display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; background:#fff; color:#667eea; border-radius:50%; font-weight:800; margin-right:.5rem; }
+
+    /* FAQ */
+    .faq { max-width:900px; margin: 0 auto; display:flex; flex-direction:column; gap:.6rem; }
+    details { background:#f8f9fa; border-radius:12px; padding:.9rem 1rem; border:1px solid #e9ecef; }
+    summary { cursor:pointer; font-weight:700; color:#2c3e50; }
+    details p { margin-top:.6rem; color:#2c3e50; }
+
+    .mini { background:#f8f9fa; border-radius:12px; padding:1.25rem; }
+
+    /* Floating buttons reused */
+    .whatsapp-float{ position:fixed; bottom:22px; right:22px; width:58px; height:58px; background:#25D366; color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 25px rgba(0,0,0,.25); z-index:1000; transition:transform .25s; text-decoration:none; }
+    .whatsapp-float:hover{ transform:scale(1.05); }
+    .whatsapp-float i{ font-size:28px; line-height:0; color:#fff; }
+
+    .notice { text-align:center; color:#6b7280; font-size:.9rem; margin-top: .25rem; }
+
+    @media (max-width:768px){ .main-content{ padding:1.2rem; } .hero-title{ font-size:1.6rem; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Nav -->
+    <nav class="nav">
+      <a href="index.html" class="brand-link" aria-label="myHealthScore home">
+        <img src="https://www.veritasint.com/wp-content/uploads/2025/05/VeritasFZ-1.png" alt="myHealthScore icon" class="brand-icon" />
+      </a>
+    </nav>
+
+    <!-- Header visual -->
+    <header class="header">
+      <img class="header-photo" src="images/veritas.webp" alt="Clinic front desk" loading="lazy" width="512" height="768" />
+    </header>
+
+    <main class="main-content">
+      <!-- Hero -->
+      <section class="hero-section">
+        <h1 class="hero-title">Front Desk Patient Guide</h1>
+        <p class="hero-subtitle">A clear, kind talk track for introducing <strong>myHealthScore</strong> to patients who are worried about breast cancer risk. Keep it simple, ask permission, and invite questions.</p>
+    
+      </section>
+
+      <!-- Quick goals -->
+      <h2 class="section-title">Quick Goals</h2>
+      <ul class="list" style="max-width:900px; margin:0 auto;">
+        <li>Be calm and reassuring; lead with prevention and clarity.</li>
+        <li>Explain <em>what it is</em>, <em>why it helps</em>, <em>how it works</em>, and <em>what happens next</em>.</li>
+        <li>Always ask permission: “Would you like a quick 30‑second overview?”</li>
+      </ul>
+
+      <!-- 30s intro -->
+      <h2 id="intro" class="section-title">30‑Second Intro (desk or phone)</h2>
+      <div class="script-block card" id="introScript">
+        
+        <div class="script-text">
+If you’d like, there’s a simple DNA test called <strong>MyHealthScore</strong> that shows your personal breast cancer risk—even if you don’t have a family history. It’s a one‑time, at‑home cheek swab. Results help the doctor tailor your screening and follow‑up. It doesn’t replace mammograms; it adds clarity. Would you like a quick overview of how it works?
+        </div>
+      </div>
+
+      <!-- 2‑minute explanation (4 Ps) -->
+      <h2 class="section-title">2‑Minute Explanation — The 4 Ps</h2>
+      <div class="grid" style="max-width:1100px; margin:0 auto;">
+        <div class="card" id="pPurpose">
+          <h4>1) Purpose</h4>
+          <p class="script-text">The idea is to understand your personal risk early, so your screening plan fits you.</p>
+          
+        </div>
+        <div class="card" id="pProof">
+          <h4>2) Proof (simple)</h4>
+          <p class="script-text">Risk isn’t about a single gene. It combines many small genetic markers into one clear score.</p>
+          
+        </div>
+        <div class="card" id="pProcess">
+          <h4>3) Process</h4>
+          <p class="script-text">You receive a home kit (cheek swab), send it back, and we analyse your DNA. Your result is a clear score—low, medium, or higher—and then the doctor discusses what’s best for you.</p>
+          
+        </div>
+        <div class="card" id="pPayoff">
+          <h4>4) Payoff</h4>
+          <p class="script-text">If your risk is higher, we consider earlier or more tailored screening. If it’s lower, we can avoid unnecessary tests. It’s a one‑time test that gives long‑term clarity.</p>
+          
+        </div>
+      </div>
+
+      <!-- How it works -->
+      <h2 class="section-title">How It Works — 4 Steps</h2>
+      <div class="steps" style="max-width:1100px; margin:0 auto;">
+        <div class="step">Scan QR → short form</div>
+        <div class="step">Receive at‑home care</div>
+        <div class="step">Lab analysis → personal risk score</div>
+        <div class="step">Doctor reviews & aligns your screening plan</div>
+      </div>
+
+
+
+      <!-- FAQ -->
+      <h2 class="section-title">Quick Q&A</h2>
+      <div class="faq">
+        <details>
+          <summary>Does it replace mammograms?</summary>
+          <p>No. It doesn’t replace mammograms; it helps personalise them.</p>
+        </details>
+        <details>
+          <summary>What if I’m anxious about a ‘high‑risk’ result?</summary>
+          <p>The goal isn’t to cause worry—it’s to act earlier and smarter if needed.</p>
+        </details>
+        <details>
+          <summary>I don’t have family history—do I still need this?</summary>
+          <p>Many women without family history still have different genetic risk. This shows <em>your</em> personal risk.</p>
+        </details>
+        <details>
+          <summary>Is it painful or complicated?</summary>
+          <p>No—just a simple at‑home cheek swab.</p>
+        </details>
+        <details>
+          <summary>What about privacy?</summary>
+          <p>Your data is protected and used only for medical analysis and prevention planning.</p>
+        </details>
+        <details>
+          <summary>Cost and timing?</summary>
+          <p>I can share the price range and confirm details before you start.</p>
+        </details>
+      </div>
+
+      <!-- Objection handling -->
+      <h2 class="section-title">Objection Handling — One‑liners</h2>
+      <div class="grid" style="max-width:1100px; margin:0 auto;">
+        <div class="script-block" id="obj1">
+          
+          <div class="script-text"><strong>“I already do mammograms.”</strong> — Great—this adds a personalised layer so timing and frequency fit you.</div>
+        </div>
+        <div class="script-block" id="obj2">
+          
+          <div class="script-text"><strong>“I’m 30—too early?”</strong> — Risk clarity helps at any age—it guides when to start and how often.</div>
+        </div>
+        <div class="script-block" id="obj3">
+          
+          <div class="script-text"><strong>“I’m scared of what I’ll find.”</strong> — Totally understandable. Knowing earlier usually means simpler, more effective steps.</div>
+        </div>
+      </div>
+
+      <!-- WhatsApp template -->
+      <h2 class="section-title">WhatsApp Follow‑up Template</h2>
+      <div class="card mini" style="max-width:900px; margin:0 auto; position:relative;" id="waBlock">
+        <button class="copy-btn" data-copy="waText">Copy</button>
+        <p class="notice">Send with the QR/link after the conversation.</p>
+        <textarea id="waText" rows="6" style="width:100%; border:1px solid #e5e7eb; border-radius:12px; padding:1rem; font-family:inherit;">
+Hi, this is the front desk team at [Clinic Name]. As discussed, here’s the MyHealthScore link—a one-time, at-home cheek swab to understand your personal breast cancer risk and tailor your screening. Any questions before you start? 
+        </textarea>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- WhatsApp quick contact -->
+  <a href="#"
+   class="whatsapp-float"
+   aria-label="Chat on WhatsApp"
+   onclick="gtag && gtag('event','whatsapp_click_float',{label:'Floating WhatsApp',location:'floating'}); openWhatsApp(PHONE, 'Hi! I want to learn more about myHealthScore.'); return false;">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <script>
+    // Copy buttons (works for divs and textareas)
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const id = btn.getAttribute('data-copy');
+        const el = document.getElementById(id);
+        if (!el) return;
+        let text = '';
+        if (el.tagName.toLowerCase() === 'textarea') {
+          text = el.value;
+        } else {
+          // gather innerText from the element excluding the copy button
+          const clone = el.cloneNode(true);
+          clone.querySelectorAll('.copy-btn').forEach(b => b.remove());
+          text = clone.innerText.trim();
+        }
+        try {
+          await navigator.clipboard.writeText(text);
+          btn.textContent = 'Copied!';
+          setTimeout(() => (btn.textContent = 'Copy'), 1200);
+        } catch (e) {
+          alert('Copy not available on this browser.');
+        }
+      });
+    });
+
+    // Open WhatsApp with the textarea content
+    const openWA = document.getElementById('openWA');
+    openWA?.addEventListener('click', (e) => {
+      e.preventDefault();
+      const txt = document.getElementById('waText').value;
+      gtag && gtag('event','whatsapp_click_template',{label:'WA Template',location:'guide'});
+      openWhatsApp(PHONE, txt);
+    });
+  </script>
+<script>
+  // One number everywhere
+  const PHONE = '9613110898'; // full international, no "+"
+
+  // Opens WhatsApp without showing the "install Business" box
+  function openWhatsApp(phone = PHONE, text = '') {
+    const n = String(phone).replace(/[^0-9]/g, '');
+    const msg = encodeURIComponent(text || '');
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    if (!isMobile) {
+      // Desktop → Web WhatsApp
+      window.open(`https://web.whatsapp.com/send?phone=${n}&text=${msg}`, '_blank', 'noopener');
+      return;
+    }
+
+    // Mobile: try native scheme first (no package = no "install" dialog)
+    const scheme = `whatsapp://send?phone=${n}&text=${msg}`;
+    const web    = `https://api.whatsapp.com/send?phone=${n}&text=${msg}`;
+
+    let fallbackTimer;
+
+    // If the app opens, the page goes hidden → cancel fallback
+    const cancelFallback = () => { if (fallbackTimer) clearTimeout(fallbackTimer); };
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) cancelFallback();
+    }, { once: true });
+
+    // Attempt native app
+    location.href = scheme;
+
+    // If nothing handled it, quietly fall back to the web endpoint
+    fallbackTimer = setTimeout(() => {
+      location.href = web;
+    }, 900);
+  }
+</script>
+</body>
+</html>
