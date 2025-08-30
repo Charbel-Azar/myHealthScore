@@ -1044,11 +1044,12 @@ border-radius:3px;
 @media (max-width: 768px) {
     .selection-grid {
         grid-template-columns: 1fr;
-        padding: 1rem;
+        padding: 0;
+        margin: 0;
     }
     
     .selection-card {
-        margin: 0 1rem;
+        margin: 0;
     }
     
     .card-content {
