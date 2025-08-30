@@ -11,9 +11,27 @@
     
     <link rel="stylesheet" href="assets/css/breastcancer.css">
     <script src="assets/js/analytics.js"></script>
+    <script src="assets/js/translations.js"></script>
 </head>
 
 <body>
+    <!-- Navigation -->
+    <nav class="nav">
+      <a href="index.html" class="brand-link" aria-label="myHealthScore home">
+        <img src="https://www.veritasint.com/wp-content/uploads/2025/05/VeritasFZ-1.png" alt="myHealthScore icon" class="brand-icon" />
+      </a>
+      
+      <!-- Language Selector -->
+      <div class="language-selector">
+        <div class="selected-text" data-translate="language_selector">Language</div>
+        <div class="dropdown">
+          <div class="dropdown-option" onclick="changeLanguage('en')" data-translate="english">English</div>
+          <div class="dropdown-option" onclick="changeLanguage('ar')" data-translate="arabic">العربية</div>
+          <div class="dropdown-option" onclick="changeLanguage('fr')" data-translate="french">Français</div>
+        </div>
+      </div>
+    </nav>
+
     <!-- DNA Loading Screen -->
     <div class="Loader">
         <div class="spinnerPairHolder">
@@ -43,12 +61,12 @@
     <!-- ===== HERO ===== -->
     <header class="hero" role="banner">
         <div class="hero-inner container">
-            <span class="badge"><i class="fa-solid fa-ribbon"></i> Breast Cancer Awareness Month Portal</span>
-            <h1>Early Detection Saves Lives. Prevention Starts Today.</h1>
-            <p class="sub">October is Breast Cancer Awareness Month. Learn how to protect your health, when to get screened, and which risk factors you can change.</p>
+            <span class="badge" data-translate="breastcancer_badge"><i class="fa-solid fa-ribbon"></i> Breast Cancer Awareness Month Portal</span>
+            <h1 data-translate="breastcancer_hero_title_main">Early Detection Saves Lives. Prevention Starts Today.</h1>
+            <p class="sub" data-translate="breastcancer_hero_subtitle_main">October is Breast Cancer Awareness Month. Learn how to protect your health, when to get screened, and which risk factors you can change.</p>
             <div class="cta-row">
-                <a href="#age-guide" class="btn btn-primary"><i class="fa-solid fa-list-check"></i> See Your Plan</a>
-                <a href="#" id="waHero" class="btn btn-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp the Clinic</a>
+                <a href="#age-guide" class="btn btn-primary"><i class="fa-solid fa-list-check"></i> <span data-translate="see_your_plan">See Your Plan</span></a>
+                <a href="#" id="waHero" class="btn btn-wa"><i class="fa-brands fa-whatsapp"></i> <span data-translate="whatsapp_clinic">WhatsApp the Clinic</span></a>
             </div>
         </div>
     </header>
@@ -56,23 +74,23 @@
     <main class="container" role="main">
         <!-- ===== Doctor section ===== -->
         <section id="doctor" aria-labelledby="doctor-title">
-            <h2 id="doctor-title">Clinical Support</h2>
-            <p class="lead">This campaign is supported by [Dr. Name], Consultant in Oncology & Women's Health. Dr. [Name] promotes evidence-based prevention and early detection, helping patients understand screening schedules, lifestyle steps, and the role of genetics.</p>
+            <h2 id="doctor-title" data-translate="clinical_support_title">Clinical Support</h2>
+            <p class="lead" data-translate="clinical_support_lead">This campaign is supported by [Dr. Name], Consultant in Oncology & Women's Health. Dr. [Name] promotes evidence-based prevention and early detection, helping patients understand screening schedules, lifestyle steps, and the role of genetics.</p>
             <div class="grid cols-2">
                 <div class="card">
                     <img id="doctor-photo" src="assets/images/breastcancer/ghosn.jpg" alt="Doctor portrait" loading="lazy" style="width:100%; border-radius:12px; max-height:340px; object-fit:cover">
                 </div>
                 <div class="card">
-                    <h3 id="doctor-name" style="margin-top:0">Dr. [Name]</h3>
-                    <p>Consultant in Oncology & Women's Health focused on evidence-based prevention and early detection protocols. Specializes in helping patients understand personalized screening schedules, lifestyle interventions, and genetic risk assessment.</p>
+                    <h3 id="doctor-name" style="margin-top:0" data-translate="doctor_name">Dr. [Name]</h3>
+                    <p data-translate="doctor_description">Consultant in Oncology & Women's Health focused on evidence-based prevention and early detection protocols. Specializes in helping patients understand personalized screening schedules, lifestyle interventions, and genetic risk assessment.</p>
                     <ul>
-                        <li>Board-certified in Medical Oncology and Women's Health</li>
-                        <li>Evidence-based approach to prevention and screening</li>
-                        <li>Personalized risk assessment and genetic counseling coordination</li>
-                        <li>Collaborative patient care with multidisciplinary teams</li>
+                        <li data-translate="doctor_qualification_1">Board-certified in Medical Oncology and Women's Health</li>
+                        <li data-translate="doctor_qualification_2">Evidence-based approach to prevention and screening</li>
+                        <li data-translate="doctor_qualification_3">Personalized risk assessment and genetic counseling coordination</li>
+                        <li data-translate="doctor_qualification_4">Collaborative patient care with multidisciplinary teams</li>
                     </ul>
                     <div class="cta-row" style="margin-top:.5rem">
-                        <a href="#" id="waDoctor" class="btn btn-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp for Consultation</a>
+                        <a href="#" id="waDoctor" class="btn btn-wa"><i class="fa-brands fa-whatsapp"></i> <span data-translate="whatsapp_consultation">WhatsApp for Consultation</span></a>
                     </div>
                 </div>
             </div>
@@ -329,5 +347,34 @@
     </footer>
 
     <script src="assets/js/breastcancer.js"></script>
+    
+    <script>
+    // Language dropdown functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const languageSelector = document.querySelector('.language-selector');
+        const selectedText = languageSelector.querySelector('.selected-text');
+        
+        // Toggle dropdown on click
+        selectedText.addEventListener('click', function(e) {
+            e.stopPropagation();
+            languageSelector.classList.toggle('active');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!languageSelector.contains(e.target)) {
+                languageSelector.classList.remove('active');
+            }
+        });
+        
+        // Close dropdown when selecting a language
+        const dropdownOptions = languageSelector.querySelectorAll('.dropdown-option');
+        dropdownOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                languageSelector.classList.remove('active');
+            });
+        });
+    });
+    </script>
 </body>
 </html>

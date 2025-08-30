@@ -10,6 +10,7 @@
 
   <link rel="stylesheet" href="assets/css/frontdesk.css">
   <script src="assets/js/analytics.js"></script>
+  <script src="assets/js/translations.js"></script>
 </head>
 <body>
   <!-- DNA Loading Screen -->
@@ -44,6 +45,16 @@
       <a href="index.html" class="brand-link" aria-label="myHealthScore home">
         <img src="https://www.veritasint.com/wp-content/uploads/2025/05/VeritasFZ-1.png" alt="myHealthScore icon" class="brand-icon" />
       </a>
+      
+      <!-- Language Selector -->
+      <div class="language-selector">
+        <div class="selected-text" data-translate="language_selector">Language</div>
+        <div class="dropdown">
+          <div class="dropdown-option" onclick="changeLanguage('en')" data-translate="english">English</div>
+          <div class="dropdown-option" onclick="changeLanguage('ar')" data-translate="arabic">العربية</div>
+          <div class="dropdown-option" onclick="changeLanguage('fr')" data-translate="french">Français</div>
+        </div>
+      </div>
     </nav>
 
     <!-- Header visual -->
@@ -54,116 +65,116 @@
     <main class="main-content">
       <!-- Hero -->
       <section class="hero-section">
-        <h1 class="hero-title">Front Desk Patient Guide</h1>
-        <p class="hero-subtitle">A clear, kind talk track for introducing <strong>myHealthScore</strong> to patients who are worried about breast cancer risk. Keep it simple, ask permission, and invite questions.</p>
+        <h1 class="hero-title" data-translate="frontdesk_hero_title">Front Desk Patient Guide</h1>
+        <p class="hero-subtitle" data-translate="frontdesk_hero_subtitle">A clear, kind talk track for introducing <strong>myHealthScore</strong> to patients who are worried about breast cancer risk. Keep it simple, ask permission, and invite questions.</p>
     
       </section>
 
       <!-- Quick goals -->
-      <h2 class="section-title">Quick Goals</h2>
+      <h2 class="section-title" data-translate="quick_goals_title">Quick Goals</h2>
       <ul class="list" style="max-width:900px; margin:0 auto;">
-        <li>Be calm and reassuring; lead with prevention and clarity.</li>
-        <li>Explain <em>what it is</em>, <em>why it helps</em>, <em>how it works</em>, and <em>what happens next</em>.</li>
-        <li>Always ask permission: "Would you like a quick 30‑second overview?"</li>
+        <li data-translate="quick_goal_1">Be calm and reassuring; lead with prevention and clarity.</li>
+        <li data-translate="quick_goal_2">Explain <em>what it is</em>, <em>why it helps</em>, <em>how it works</em>, and <em>what happens next</em>.</li>
+        <li data-translate="quick_goal_3">Always ask permission: "Would you like a quick 30‑second overview?"</li>
       </ul>
 
       <!-- 30s intro -->
-      <h2 id="intro" class="section-title">30‑Second Intro (desk or phone)</h2>
+      <h2 id="intro" class="section-title" data-translate="intro_title">30‑Second Intro (desk or phone)</h2>
       <div class="script-block card" id="introScript">
         
-        <div class="script-text">
+        <div class="script-text" data-translate="intro_script">
 If you'd like, there's a simple DNA test called <strong>MyHealthScore</strong> that shows your personal breast cancer risk—even if you don't have a family history. It's a one‑time, at‑home cheek swab. Results help the doctor tailor your screening and follow‑up. It doesn't replace mammograms; it adds clarity. Would you like a quick overview of how it works?
         </div>
       </div>
 
       <!-- 2‑minute explanation (4 Ps) -->
-      <h2 class="section-title">2‑Minute Explanation — The 4 Ps</h2>
+      <h2 class="section-title" data-translate="explanation_title">2‑Minute Explanation — The 4 Ps</h2>
       <div class="grid" style="max-width:1100px; margin:0 auto;">
         <div class="card" id="pPurpose">
-          <h4>1) Purpose</h4>
-          <p class="script-text">The idea is to understand your personal risk early, so your screening plan fits you.</p>
+          <h4 data-translate="purpose_title">1) Purpose</h4>
+          <p class="script-text" data-translate="purpose_text">The idea is to understand your personal risk early, so your screening plan fits you.</p>
           
         </div>
         <div class="card" id="pProof">
-          <h4>2) Proof (simple)</h4>
-          <p class="script-text">Risk isn't about a single gene. It combines many small genetic markers into one clear score.</p>
+          <h4 data-translate="proof_title">2) Proof (simple)</h4>
+          <p class="script-text" data-translate="proof_text">Risk isn't about a single gene. It combines many small genetic markers into one clear score.</p>
           
         </div>
         <div class="card" id="pProcess">
-          <h4>3) Process</h4>
-          <p class="script-text">You receive a home kit (cheek swab), send it back, and we analyse your DNA. Your result is a clear score—low, medium, or higher—and then the doctor discusses what's best for you.</p>
+          <h4 data-translate="process_title">3) Process</h4>
+          <p class="script-text" data-translate="process_text">You receive a home kit (cheek swab), send it back, and we analyse your DNA. Your result is a clear score—low, medium, or higher—and then the doctor discusses what's best for you.</p>
           
         </div>
         <div class="card" id="pPayoff">
-          <h4>4) Payoff</h4>
-          <p class="script-text">If your risk is higher, we consider earlier or more tailored screening. If it's lower, we can avoid unnecessary tests. It's a one‑time test that gives long‑term clarity.</p>
+          <h4 data-translate="payoff_title">4) Payoff</h4>
+          <p class="script-text" data-translate="payoff_text">If your risk is higher, we consider earlier or more tailored screening. If it's lower, we can avoid unnecessary tests. It's a one‑time test that gives long‑term clarity.</p>
           
         </div>
       </div>
 
       <!-- How it works -->
-      <h2 class="section-title">How It Works — 4 Steps</h2>
+      <h2 class="section-title" data-translate="how_it_works_title">How It Works — 4 Steps</h2>
       <div class="steps" style="max-width:1100px; margin:0 auto;">
-        <div class="step">Scan QR → short form</div>
-        <div class="step">Receive at‑home care</div>
-        <div class="step">Lab analysis → personal risk score</div>
-        <div class="step">Doctor reviews & aligns your screening plan</div>
+        <div class="step" data-translate="step_1">Scan QR → short form</div>
+        <div class="step" data-translate="step_2">Receive at‑home care</div>
+        <div class="step" data-translate="step_3">Lab analysis → personal risk score</div>
+        <div class="step" data-translate="step_4">Doctor reviews & aligns your screening plan</div>
       </div>
 
 
 
       <!-- FAQ -->
-      <h2 class="section-title">Quick Q&A</h2>
+      <h2 class="section-title" data-translate="faq_title">Quick Q&A</h2>
       <div class="faq">
         <details>
-          <summary>Does it replace mammograms?</summary>
-          <p>No. It doesn't replace mammograms; it helps personalise them.</p>
+          <summary data-translate="faq_1_question">Does it replace mammograms?</summary>
+          <p data-translate="faq_1_answer">No. It doesn't replace mammograms; it helps personalise them.</p>
         </details>
         <details>
-          <summary>What if I'm anxious about a 'high‑risk' result?</summary>
-          <p>The goal isn't to cause worry—it's to act earlier and smarter if needed.</p>
+          <summary data-translate="faq_2_question">What if I'm anxious about a 'high‑risk' result?</summary>
+          <p data-translate="faq_2_answer">The goal isn't to cause worry—it's to act earlier and smarter if needed.</p>
         </details>
         <details>
-          <summary>I don't have family history—do I still need this?</summary>
-          <p>Many women without family history still have different genetic risk. This shows <em>your</em> personal risk.</p>
+          <summary data-translate="faq_3_question">I don't have family history—do I still need this?</summary>
+          <p data-translate="faq_3_answer">Many women without family history still have different genetic risk. This shows <em>your</em> personal risk.</p>
         </details>
         <details>
-          <summary>Is it painful or complicated?</summary>
-          <p>No—just a simple at‑home cheek swab.</p>
+          <summary data-translate="faq_4_question">Is it painful or complicated?</summary>
+          <p data-translate="faq_4_answer">No—just a simple at‑home cheek swab.</p>
         </details>
         <details>
-          <summary>What about privacy?</summary>
-          <p>Your data is protected and used only for medical analysis and prevention planning.</p>
+          <summary data-translate="faq_5_question">What about privacy?</summary>
+          <p data-translate="faq_5_answer">Your data is protected and used only for medical analysis and prevention planning.</p>
         </details>
         <details>
-          <summary>Cost and timing?</summary>
-          <p>I can share the price range and confirm details before you start.</p>
+          <summary data-translate="faq_6_question">Cost and timing?</summary>
+          <p data-translate="faq_6_answer">I can share the price range and confirm details before you start.</p>
         </details>
       </div>
 
       <!-- Objection handling -->
-      <h2 class="section-title">Objection Handling — One‑liners</h2>
+      <h2 class="section-title" data-translate="objection_title">Objection Handling — One‑liners</h2>
       <div class="grid" style="max-width:1100px; margin:0 auto;">
         <div class="script-block" id="obj1">
           
-          <div class="script-text"><strong>"I already do mammograms."</strong> — Great—this adds a personalised layer so timing and frequency fit you.</div>
+          <div class="script-text" data-translate="obj_1"><strong>"I already do mammograms."</strong> — Great—this adds a personalised layer so timing and frequency fit you.</div>
         </div>
         <div class="script-block" id="obj2">
           
-          <div class="script-text"><strong>"I'm 30—too early?"</strong> — Risk clarity helps at any age—it guides when to start and how often.</div>
+          <div class="script-text" data-translate="obj_2"><strong>"I'm 30—too early?"</strong> — Risk clarity helps at any age—it guides when to start and how often.</div>
         </div>
         <div class="script-block" id="obj3">
           
-          <div class="script-text"><strong>"I'm scared of what I'll find."</strong> — Totally understandable. Knowing earlier usually means simpler, more effective steps.</div>
+          <div class="script-text" data-translate="obj_3"><strong>"I'm scared of what I'll find."</strong> — Totally understandable. Knowing earlier usually means simpler, more effective steps.</div>
         </div>
       </div>
 
       <!-- WhatsApp template -->
-      <h2 class="section-title">WhatsApp Follow‑up Template</h2>
+      <h2 class="section-title" data-translate="whatsapp_template_title">WhatsApp Follow‑up Template</h2>
       <div class="card mini" style="max-width:900px; margin:0 auto; position:relative;" id="waBlock">
         <button class="copy-btn" data-copy="waText">Copy</button>
-        <p class="notice">Send with the QR/link after the conversation.</p>
-        <textarea id="waText" rows="6" style="width:100%; border:1px solid #e5e7eb; border-radius:12px; padding:1rem; font-family:inherit;">
+        <p class="notice" data-translate="whatsapp_notice">Send with the QR/link after the conversation.</p>
+        <textarea id="waText" rows="6" style="width:100%; border:1px solid #e5e7eb; border-radius:12px; padding:1rem; font-family:inherit;" data-translate="whatsapp_template">
 Hi, this is the front desk team at [Clinic Name]. As discussed, here's the MyHealthScore link—a one-time, at the comfort of your home, to understand your personal breast cancer risk and tailor your screening. Any questions before you start? 
         </textarea>
       </div>
@@ -180,5 +191,34 @@ Hi, this is the front desk team at [Clinic Name]. As discussed, here's the MyHea
   </a>
 
   <script src="assets/js/frontdesk.js"></script>
+  
+  <script>
+  // Language dropdown functionality
+  document.addEventListener('DOMContentLoaded', function() {
+      const languageSelector = document.querySelector('.language-selector');
+      const selectedText = languageSelector.querySelector('.selected-text');
+      
+      // Toggle dropdown on click
+      selectedText.addEventListener('click', function(e) {
+          e.stopPropagation();
+          languageSelector.classList.toggle('active');
+      });
+      
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function(e) {
+          if (!languageSelector.contains(e.target)) {
+              languageSelector.classList.remove('active');
+          }
+      });
+      
+      // Close dropdown when selecting a language
+      const dropdownOptions = languageSelector.querySelectorAll('.dropdown-option');
+      dropdownOptions.forEach(option => {
+          option.addEventListener('click', function() {
+              languageSelector.classList.remove('active');
+          });
+      });
+  });
+  </script>
 </body>
 </html>

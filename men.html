@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="assets/css/index.css">
     <script src="assets/js/analytics.js"></script>
+    <script src="assets/js/translations.js"></script>
 </head>
 <body>
     <!-- DNA Loading Screen -->
@@ -47,6 +48,16 @@
     <img src="https://www.veritasint.com/wp-content/uploads/2025/05/VeritasFZ-1.png"
          alt="myHealthScore icon" class="brand-icon">
   </a>
+  
+  <!-- Language Selector -->
+  <div class="language-selector">
+    <div class="selected-text" data-translate="language_selector">Language</div>
+    <div class="dropdown">
+      <div class="dropdown-option" onclick="changeLanguage('en')" data-translate="english">English</div>
+      <div class="dropdown-option" onclick="changeLanguage('ar')" data-translate="arabic">العربية</div>
+      <div class="dropdown-option" onclick="changeLanguage('fr')" data-translate="french">Français</div>
+    </div>
+  </div>
 </nav>
 
       <header class="header">
@@ -68,16 +79,16 @@
             <!-- Hero Section -->
             <section class="hero-section fade-in">
                 <h1 class="hero-title">
-                Know your hidden disease risks in <br>
+                <span data-translate="mens_hero_title">Take Control of Your Health</span> <br>
            
                 </h1>     
-                <b class="animated-underline"><b>one simple test</b></b> <br>
+                <b class="animated-underline"><b data-translate="hero_title_part2">one simple test</b></b> <br>
 <a href="#"
    class="cta-button"
-   onclick="gtag('event','whatsapp_click_header',{label:'Explore CTA',location:'hero'}); openWhatsApp(PHONE, 'Hi, I am interested in your myHealthScore test. How can I start?'); return false;">
-  Explore How This Test Can Help You
+   onclick="gtag('event','whatsapp_click_header',{label:'Explore CTA',location:'hero'}); openWhatsApp(PHONE, getText('mens_whatsapp_message')); return false;">
+  <span data-translate="mens_cta">Get Your Personalized Report</span>
 </a>
-              <p class="hero-subtitle">myHealthScore is a simple genetic test that helps you understand your risk for common diseases like heart disease, diabetes, and certain cancers. It looks at many small changes in your DNA to uncover hidden risks that regular check-ups might miss.</p>
+              <p class="hero-subtitle" data-translate="mens_hero_subtitle">Discover your genetic risk factors for common male health conditions and take proactive steps towards better health.</p>
             </section>
 
             <!-- Statistics -->
@@ -132,8 +143,8 @@
                             </g>
                         </svg>
                     </div>
-                    <div class="stat-number">9 in 10</div>
-                    <div class="stat-text">Men diagnosed with prostate cancer do not have a family history of the disease</div>
+                    <div class="stat-number" data-translate="stat_9_in_10">9 in 10</div>
+                    <div class="stat-text" data-translate="stat_9_in_10_text">Men diagnosed with prostate cancer do not have a family history of the disease</div>
                 </div>
                 <div class="stat-card fade-in">
                     <div class="stat-icons">
@@ -159,8 +170,8 @@
                             </g>
                         </svg>
                     </div>
-                    <div class="stat-number">1 in 4</div>
-                    <div class="stat-text">People with heart disease remain undiagnosed with routine check-ups</div>
+                    <div class="stat-number" data-translate="stat_1_in_4">1 in 4</div>
+                    <div class="stat-text" data-translate="stat_1_in_4_text">People with heart disease remain undiagnosed with routine check-ups</div>
                 </div>
                 
                 <div class="stat-card fade-in">
@@ -213,14 +224,14 @@
                             </g>
                         </svg>
                     </div>
-                    <div class="stat-number">8 in 10</div>
-                    <div class="stat-text">People with pre-diabetes are not aware of their condition and the possibilities for prevention</div>
+                    <div class="stat-number" data-translate="stat_8_in_10">8 in 10</div>
+                    <div class="stat-text" data-translate="stat_8_in_10_text">People with pre-diabetes are not aware of their condition and the possibilities for prevention</div>
                 </div>
             </section>
 
            <!-- Diseases Section -->
             <section class="diseases-section">
-                <h2 class="section-title">Which diseases are included in myHealthScore?</h2>
+                <h2 class="section-title" data-translate="diseases_section_title">Which diseases are included in myHealthScore?</h2>
                
                 <div class="diseases-grid">
                     <div class="disease-card fade-in">
@@ -231,9 +242,9 @@
                           loading="lazy"
                           width="512" height="512"
                           /></div>
-                      <h3 class="disease-title">Prostate Cancer</h3>
-                      <p class="disease-description">The test allows the detection of polygenic risk of prostate cancer in men that is not detectable by other genetic tests. These cases are usually considered to be of sporadic origin.</p>
-                      <span class="variants-count">> 680,000 variants</span>
+                      <h3 class="disease-title" data-translate="prostate_cancer_title">Prostate Cancer</h3>
+                      <p class="disease-description" data-translate="prostate_cancer_desc">The test allows the detection of polygenic risk of prostate cancer in men that is not detectable by other genetic tests. These cases are usually considered to be of sporadic origin.</p>
+                      <span class="variants-count" data-translate="variants_count">> 680,000 variants</span>
                   </div>
                     <div class="disease-card fade-in">
                           <div class="disease-icon">
@@ -243,10 +254,10 @@
                             loading="lazy"
                             width="512" height="512"
                             /></div>
-                        <h3 class="disease-title">Cardiovascular Disease*</h3>
-                        <p class="disease-description">This test helps identify people who may actually be at high risk, even if their regular check-ups say they're only at moderate risk.</p>
-                        <span class="variants-count">> 2 million variants</span>
-                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">Knowing your risk early can help you take action to prevent the disease.</p>
+                        <h3 class="disease-title" data-translate="cardiovascular_disease_title">Cardiovascular Disease*</h3>
+                        <p class="disease-description" data-translate="cardiovascular_disease_desc">This test helps identify people who may actually be at high risk, even if their regular check-ups say they're only at moderate risk.</p>
+                        <span class="variants-count" data-translate="cardiovascular_variants">> 2 million variants</span>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;" data-translate="early_risk_note">Knowing your risk early can help you take action to prevent the disease.</p>
                     </div>
 
                     <div class="disease-card fade-in">
@@ -257,45 +268,45 @@
                             loading="lazy"
                             width="512" height="512"
                             /></div>
-                        <h3 class="disease-title">Type 2 Diabetes</h3>
-                        <p class="disease-description">Early detection of polygenic risk enables proactive management and lifestyle interventions to prevent or delay disease onset.</p>
-                        <span class="variants-count">> 600,000 variants</span>
+                        <h3 class="disease-title" data-translate="diabetes_title">Type 2 Diabetes</h3>
+                        <p class="disease-description" data-translate="diabetes_desc">Early detection of polygenic risk enables proactive management and lifestyle interventions to prevent or delay disease onset.</p>
+                        <span class="variants-count" data-translate="diabetes_variants">> 600,000 variants</span>
                     </div>
 
                    
                 </div>
 
-                <p style="text-align: center; margin-top: 2rem; color: #666; font-size: 0.9rem;">
+                <p style="text-align: center; margin-top: 2rem; color: #666; font-size: 0.9rem;" data-translate="cardiovascular_note">
                     *For a more comprehensive analysis of cardiovascular disease, the test includes the polygenic risk of: coronary artery disease, atrial fibrillation, lipid profile (triglycerides, LDL and HDL cholesterol) and hypertension.
                 </p>
             </section>
 
 <!-- ===== User Info Card ===== -->
 <div class="user-info-card">
-  <h3>Start By Getting Your Personalized Risk Report</h3>
+  <h3 data-translate="user_info_title">Start By Getting Your Personalized Risk Report</h3>
 
   <form id="userForm"
     onsubmit="gtag('event','lead_submit',{label:'Form Submit',location:'user_info_card'});">
     <!-- Full name (not required) -->
     <div class="form-group">
-      <label for="name">Full Name:</label>
+      <label for="name" data-translate="full_name_label">Full Name:</label>
       <input type="text" id="name" name="name">
     </div>
 
     <!-- Date of birth: YEAR → MONTH → DAY (not required) -->
     <div class="form-group">
-      <label>Date of Birth:</label>
+      <label data-translate="date_of_birth_label">Date of Birth:</label>
       <div style="display:flex; gap:.5rem;">
         <select id="dobYear" name="dobYear">
-          <option value="" selected>Year</option>
+          <option value="" selected data-translate="year_placeholder">Year</option>
           <!-- filled by JS -->
         </select>
         <select id="dobMonth" name="dobMonth">
-          <option value="" selected>Month</option>
+          <option value="" selected data-translate="month_placeholder">Month</option>
           <!-- filled by JS -->
         </select>
         <select id="dobDay" name="dobDay">
-          <option value="" selected>Day</option>
+          <option value="" selected data-translate="day_placeholder">Day</option>
           <!-- filled by JS -->
         </select>
       </div>
@@ -303,11 +314,11 @@
 
     <!-- Referring doctor (not required) -->
     <div class="form-group">
-      <label for="doctor">Referring Doctor's Name:</label>
-      <input type="text" id="doctor" name="doctor" placeholder="Enter doctor's name">
+      <label for="doctor" data-translate="doctor_label">Referring Doctor's Name:</label>
+      <input type="text" id="doctor" name="doctor" data-translate="doctor_placeholder" placeholder="Enter doctor's name">
     </div>
 
-    <button type="submit" class="cta2-button">
+    <button type="submit" class="cta2-button" data-translate="get_report_button">
       Get myHealthScore Now!
     </button>
   </form>
@@ -318,9 +329,9 @@
 
             <!-- Risk Chart -->
             <section class="chart-section">
-                <h2 class="section-title">Polygenic risk screening identifies previously unknown genetic risks</h2>
+                <h2 class="section-title" data-translate="chart_section_title">Polygenic risk screening identifies previously unknown genetic risks</h2>
                 <div class="chart-container">
-                    <div class="chart-title">Risk of developing the disease (%)</div>
+                    <div class="chart-title" data-translate="chart_title">Risk of developing the disease (%)</div>
                     <canvas id="riskChart" width="500" height="200"></canvas>
                 </div>
             </section>
@@ -329,9 +340,9 @@
             <section class="about-section">
                 <div class="about-grid">
                     <div class="about-content">
-                        <h3>What is polygenic risk?</h3>
-                        <p>The most common diseases are often multifactorial in origin. In other words, they are caused by the effect of genetics together with other factors such as lifestyle and the environment.</p>
-                        <p>In these cases, the genetic risk is not usually associated with a single variant but with thousands or millions of common variants throughout the genome. This is known as a polygenic risk.</p>
+                        <h3 data-translate="polygenic_risk_title">What is polygenic risk?</h3>
+                        <p data-translate="polygenic_risk_p1">The most common diseases are often multifactorial in origin. In other words, they are caused by the effect of genetics together with other factors such as lifestyle and the environment.</p>
+                        <p data-translate="polygenic_risk_p2">In these cases, the genetic risk is not usually associated with a single variant but with thousands or millions of common variants throughout the genome. This is known as a polygenic risk.</p>
                         
                         <!-- Polygenic Risk Visualization -->
                        <div class="wp-block-genesis-blocks-gb-container gb-layout-hero-1 gb-block-container alignfull">
@@ -345,7 +356,7 @@
   </div>
 </div>
                         
-                        <p>Knowing the genetic risk is useful to focus on other modificable risk factors with the aim of prevention.</p>
+                        <p data-translate="polygenic_risk_p3">Knowing the genetic risk is useful to focus on other modificable risk factors with the aim of prevention.</p>
                     </div>
                  
                 </div>
@@ -354,20 +365,20 @@
 
             <!-- Benefits Section -->
             <section class="benefits-section">
-                <h2 class="section-title">Who is it intended for?</h2>
-                <p style="text-align: center; color: #666; margin-bottom: 2rem;">The test is suitable for adults who are proactive about their health. The results provide information about the lifetime risk of presenting the diseases analysed in order to establish preventive strategies that will help to reduce the risk.</p>
+                <h2 class="section-title" data-translate="benefits_section_title">Who is it intended for?</h2>
+                <p style="text-align: center; color: #666; margin-bottom: 2rem;" data-translate="benefits_intro">The test is suitable for adults who are proactive about their health. The results provide information about the lifetime risk of presenting the diseases analysed in order to establish preventive strategies that will help to reduce the risk.</p>
                 
                     <ul class="benefits-list">
-                    <li class="benefit-item">It can be carried out before the onset of clinical risk factors, which allows for a more effective preventive approach.</li>
-                    <li class="benefit-item">There are calculators that establish the risk of cardiovascular disease and cancer. Incorporating myHealthScore results into these calculators improve their predictive power. On its website, Veritas offers risk calculators for cardiovascular disease and breast cancer.</li>
-                    <li class="benefit-item">Information that is independent and complementary to traditional risk factors and the study of genetic panels.</li>
-                    <li class="benefit-item">Allows the quantification of the aggregated genetic risk, scattered along the genome, associated with a particular disease.</li>
-                    <li class="benefit-item">The test is performed once in a lifetime, estimating the risk of disease and how it varies throughout life in comparison with the general population.</li>
+                    <li class="benefit-item" data-translate="benefit_1">It can be carried out before the onset of clinical risk factors, which allows for a more effective preventive approach.</li>
+                    <li class="benefit-item" data-translate="benefit_2">There are calculators that establish the risk of cardiovascular disease and cancer. Incorporating myHealthScore results into these calculators improve their predictive power. On its website, Veritas offers risk calculators for cardiovascular disease and breast cancer.</li>
+                    <li class="benefit-item" data-translate="benefit_3">Information that is independent and complementary to traditional risk factors and the study of genetic panels.</li>
+                    <li class="benefit-item" data-translate="benefit_4">Allows the quantification of the aggregated genetic risk, scattered along the genome, associated with a particular disease.</li>
+                    <li class="benefit-item" data-translate="benefit_5">The test is performed once in a lifetime, estimating the risk of disease and how it varies throughout life in comparison with the general population.</li>
 
                 </ul>
             </section>
 <section class="hero-section fade-in">
-                <h1 class="hero-title">
+                <h1 class="hero-title" data-translate="comfort_home_title">
              From The Comfort Of Your Home <br>
            
                 </h1>     
@@ -375,17 +386,17 @@
 <a href="#"
    class="cta-button"
    onclick="gtag('event','whatsapp_click_footer',{label:'Start Today CTA',location:'footer'}); openWhatsApp(PHONE, 'Hi, I would like to start myHealthScore. What are the next steps?'); return false;">
-  Start Today
+  <span data-translate="start_today_cta">Start Today</span>
 </a>
             </section> 
             <!-- About Veritas -->
             <section class="about2-section">
                 <div class="about-grid">
                     <div class="about-content">
-                        <h3>About Veritas</h3>
-                        <p>Veritas Genetics is one of the world leaders in advanced genetic sequencing and clinical interpretation of the exome and whole genome, driving the transition to personalized and preventive medicine.</p>
-                        <p>Using state-of-the-art technologies and the highest safety standards, Veritas Genetics helps individuals, healthcare professionals and institutions worldwide to understand and anticipate genetic risks, enabling more informed and proactive health decisions.</p>
-                        <p>With a focus on innovation and accessibility, Veritas Genetics transforms the way we understand and care for health at every stage of life.</p>
+                        <h3 data-translate="about_veritas_title_men">About Veritas</h3>
+                        <p data-translate="about_veritas_p1_men">Veritas Genetics is one of the world leaders in advanced genetic sequencing and clinical interpretation of the exome and whole genome, driving the transition to personalized and preventive medicine.</p>
+                        <p data-translate="about_veritas_p2_men">Using state-of-the-art technologies and the highest safety standards, Veritas Genetics helps individuals, healthcare professionals and institutions worldwide to understand and anticipate genetic risks, enabling more informed and proactive health decisions.</p>
+                        <p data-translate="about_veritas_p3_men">With a focus on innovation and accessibility, Veritas Genetics transforms the way we understand and care for health at every stage of life.</p>
                     </div>
                 </div>
             </section>
@@ -419,6 +430,35 @@
     </div>
 
     <script src="assets/js/index.js"></script>
+    
+    <script>
+    // Language dropdown functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const languageSelector = document.querySelector('.language-selector');
+        const selectedText = languageSelector.querySelector('.selected-text');
+        
+        // Toggle dropdown on click
+        selectedText.addEventListener('click', function(e) {
+            e.stopPropagation();
+            languageSelector.classList.toggle('active');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!languageSelector.contains(e.target)) {
+                languageSelector.classList.remove('active');
+            }
+        });
+        
+        // Close dropdown when selecting a language
+        const dropdownOptions = languageSelector.querySelectorAll('.dropdown-option');
+        dropdownOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                languageSelector.classList.remove('active');
+            });
+        });
+    });
+    </script>
 
 
 <a href="#"

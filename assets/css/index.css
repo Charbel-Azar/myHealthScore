@@ -205,8 +205,97 @@ box-shadow: 0 0 10px #667eea75;
   padding:1rem 0;
   border-bottom:1px solid #e9ecef;
   display:flex;
-  justify-content:center;   /* horizontal centring */
+  justify-content:space-between;   /* space between logo and language selector */
   align-items:center;       /* vertical centring */
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* Language Selector Styles */
+.language-selector {
+  position: relative;
+  display: inline-block;
+  margin-left: auto;
+}
+
+.language-selector .selected-text {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000;
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  min-width: 120px;
+  text-align: center;
+}
+
+.language-selector .selected-text:hover {
+  background: #667eea;
+  color: #fff;
+  border-color: #667eea;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px 6px #667eea88;
+}
+
+.language-selector .dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  z-index: 1000;
+  min-width: 120px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.25s ease;
+}
+
+.language-selector.active .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.language-selector .dropdown-option {
+  display: block;
+  padding: 0.8rem 1.5rem;
+  color: #000;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
+.language-selector .dropdown-option:last-child {
+  border-bottom: none;
+}
+
+.language-selector .dropdown-option:hover {
+  background: #667eea;
+  color: #fff;
+}
+
+/* RTL Support for Arabic */
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.rtl .language-selector {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.rtl .language-selector .dropdown {
+  right: auto;
+  left: 0;
 }
 
 .brand-icon {
