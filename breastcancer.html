@@ -1,33 +1,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <!-- ====== Analytics (same IDs as your current portal) ====== -->
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2LEQ4605J"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){ dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-H2LEQ4605J');
-    </script>
-    
-    <!-- Meta Pixel Code -->
-    <script>
-        !function(f,b,e,v,n,t,s) {
-            if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1262147982127732');
-        fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none" 
-                   src="https://www.facebook.com/tr?id=1262147982127732&ev=PageView&noscript=1"></noscript>
-    <!-- End Meta Pixel Code -->
-    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Breast Cancer Awareness Month Portal | Patient–Doctor Mini-Portal</title>
@@ -36,385 +9,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
     
-    <style>
-        :root{
-            --brand:#667eea;
-            --ink:#202749;
-            --pink:#ff4da6;
-            --soft:#f7f7fb;
-        }
-        
-        *{
-            box-sizing:border-box
-        }
-        
-        html,body{
-            margin:0;
-            font-family:'Quicksand',system-ui,Segoe UI,Roboto,Arial,sans-serif;
-            color:#2c3e50;
-            background:#fff;
-            line-height:1.6
-        }
-        
-        a{
-            color:var(--brand);
-            text-decoration:none
-        }
-        
-        .container{
-            max-width:1140px;
-            margin:auto;
-        }
-        
-        /* ====== Hero ====== */
-        .hero{
-            position:relative;
-            min-height:60vh;
-            display:grid;
-            place-items:center;
-            overflow:hidden;
-            color:#fff;
-            text-align:center;
-        }
-        
-        .hero::before{
-            content:"";
-            position:absolute;
-            inset:0;
-            background:linear-gradient(135deg, #ff77c3 0%, #a7b0f5 50%, #ff8bc8 100%);
-        }
-        
-        .hero::after{
-            content:"";
-            position:absolute;
-            inset:0;
-            background:url(https://upload.wikimedia.org/wikipedia/commons/b/b5/Pink_ribbon.svg) no-repeat right -8rem bottom -6rem / 480px auto;
-            opacity:.18;
-        }
-        
-        .hero-inner{
-            position:relative;
-            z-index:1;
-            padding:3rem 1rem;
-        }
-        
-        .badge{
-            display:inline-flex;
-            gap:.5rem;
-            align-items:center;
-            padding:.35rem .75rem;
-            border-radius:999px;
-            background:#fff;
-            color:#111;
-            font-weight:700;
-            font-size:.85rem;
-            box-shadow:0 8px 30px rgba(0,0,0,.15);
-        }
-        
-        .badge i{
-            color:var(--pink)
-        }
-        
-        .hero h1{
-            font-size: clamp(1.8rem, 4.2vw, 3rem);
-            margin:1rem auto .5rem;
-            max-width: 840px;
-        }
-        
-        .hero p.sub{
-            margin:.25rem auto 1.25rem;
-            font-size:clamp(1rem,2.2vw,1.25rem);
-            max-width: 860px;
-        }
-        
-        .cta-row{
-            display:flex;
-            gap:.75rem;
-            justify-content:center;
-            flex-wrap:wrap
-        }
-        
-        .btn{
-            display:inline-flex;
-            align-items:center;
-            gap:.5rem;
-            padding:.85rem 1.25rem;
-            border-radius:12px;
-            border:2px solid #111;
-            background:#fff;
-            color:#111;
-            font-weight:700;
-            cursor:pointer;
-            transition:.25s;
-        }
-        
-        .btn:hover{
-            transform:translateY(-1px);
-            box-shadow:0 10px 24px rgba(0,0,0,.18)
-        }
-        
-        .btn-primary{
-            border-color:var(--pink);
-            background:var(--pink);
-            color:#fff
-        }
-        
-        .btn-wa{
-            border-color:#25D366;
-            background:#25D366;
-            color:#fff
-        }
-        
-        /* ===== Sections ===== */
-        section{
-            padding:2.5rem 1rem
-        }
-        
-        section h2{
-            text-align:center;
-            font-size:clamp(1.4rem,3vw,2rem);
-            margin:0 0 1.2rem
-        }
-        
-        .lead{
-            text-align:center;
-            color:#4b5563;
-            max-width:900px;
-            margin:.25rem auto 2rem
-        }
-        
-        .grid{
-            display:grid;
-            gap:1rem
-        }
-        
-        @media(min-width:768px){
-            .grid.cols-3{
-                grid-template-columns:repeat(3,1fr)
-            }
-            .grid.cols-2{
-                grid-template-columns:repeat(2,1fr)
-            }
-            .grid.cols-4{
-                grid-template-columns:repeat(4,1fr)
-            }
-        }
-        
-        .card{
-            background:#fff;
-            border:1px solid #ececf3;
-            border-radius:16px;
-            padding:1.2rem;
-            box-shadow:0 6px 22px rgba(32,39,73,.06);
-        }
-        
-        .card h3{
-            margin:.25rem 0 .35rem;
-            font-size:1.1rem
-        }
-        
-        .muted{
-            color:#6b7280
-        }
-        
-        /* Partner cards */
-        .partners{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-            gap:1rem;
-            align-items:stretch;
-            grid-auto-rows:1fr
-        }
-        
-        .partner-card img{
-            width:100%;
-            height:120px;
-            object-fit:contain;
-            object-position:center;
-            background:#fff;
-            border-radius:12px
-        }
-        
-        .partner-card{
-            display:flex;
-            flex-direction:column;
-            height:100%
-        }
-        
-        .partner-card .cta-row{
-            margin-top:auto
-        }
-        
-        /* Share + float WA */
-        .float-wa, .float-share{
-            position:fixed;
-            z-index:1000;
-            bottom:18px;
-            width:56px;
-            height:56px;
-            border-radius:50%;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            color:#fff;
-            box-shadow:0 10px 30px rgba(0,0,0,.25);
-            transition:transform .2s;
-        }
-        
-        .float-wa{
-            right:18px;
-            background:#25D366
-        }
-        
-        .float-share{
-            left:18px;
-            background:#e11d48
-        }
-        
-        .float-wa:hover, .float-share:hover{
-            transform:scale(1.05)
-        }
-        
-        .share-panel{
-            position:fixed;
-            left:18px;
-            bottom:86px;
-            width:240px;
-            background:#fff;
-            border-radius:14px;
-            box-shadow:0 12px 40px rgba(0,0,0,.25);
-            display:none;
-            z-index:1001;
-            border:1px solid #eee;
-            overflow:hidden
-        }
-        
-        .share-panel.open{
-            display:block;
-        }
-        
-        .share-option{
-            display:flex;
-            align-items:center;
-            gap:.6rem;
-            padding:.7rem .8rem;
-            background:#fff;
-            border:0;
-            width:100%;
-            cursor:pointer;
-            font-weight:700
-        }
-        
-        .share-option:hover{
-            background:#f7f7fb
-        }
-        
-        .toast{
-            position:fixed;
-            left:18px;
-            bottom:160px;
-            background:#111;
-            color:#fff;
-            padding:.4rem .7rem;
-            border-radius:8px;
-            opacity:0;
-            transform:translateY(6px);
-            transition:.2s
-        }
-        
-        .toast.show{
-            opacity:1;
-            transform:translateY(0)
-        }
-        
-        /* Footer compliance */
-        .compliance{
-            background:#0f172a;
-            color:#e5e7eb;
-            font-size:.9rem
-        }
-        
-        .credits{
-            font-size:.8rem;
-            color:#cbd5e1
-        }
-        
-        /* FAQ Styling */
-        .faq-item {
-            background: #fff;
-            border: 1px solid #ececf3;
-            border-radius: 12px;
-            margin-bottom: 1rem;
-            overflow: hidden;
-        }
-        
-        .faq-question {
-            background: var(--soft);
-            padding: 1rem;
-            border: none;
-            width: 100%;
-            text-align: left;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: var(--ink);
-        }
-        
-        .faq-answer {
-            padding: 1rem;
-            color: #4b5563;
-            display: none;
-        }
-        
-        .faq-answer.show {
-            display: block;
-        }
-        
-        /* Myth vs Fact */
-        .myth-fact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .myth-card {
-            background: #fef2f2;
-            border: 1px solid #fecaca;
-            border-left: 4px solid #ef4444;
-            border-radius: 12px;
-            padding: 1.25rem;
-        }
-        
-        .fact-card {
-            background: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            border-left: 4px solid #22c55e;
-            border-radius: 12px;
-            padding: 1.25rem;
-        }
-        
-        .myth-card h4 {
-            color: #dc2626;
-            margin: 0 0 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .fact-card h4 {
-            color: #059669;
-            margin: 0 0 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/breastcancer.css">
+    <script src="assets/js/analytics.js"></script>
 </head>
 
 <body>
+    <!-- DNA Loading Screen -->
+    <div class="Loader">
+        <div class="spinnerPairHolder">
+            <div class="spinnerPair">
+                <div class="spinnerPairCercle"></div>
+                <div class="spinnerPairCercle"></div>
+            </div>
+            <div class="spinnerPair">
+                <div class="spinnerPairCercle"></div>
+                <div class="spinnerPairCercle"></div>
+            </div>
+            <div class="spinnerPair">
+                <div class="spinnerPairCercle"></div>
+                <div class="spinnerPairCercle"></div>
+            </div>
+            <div class="spinnerPair">
+                <div class="spinnerPairCercle"></div>
+                <div class="spinnerPairCercle"></div>
+            </div>
+            <div class="spinnerPair">
+                <div class="spinnerPairCercle"></div>
+                <div class="spinnerPairCercle"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- ===== HERO ===== -->
     <header class="hero" role="banner">
         <div class="hero-inner container">
@@ -435,7 +60,7 @@
             <p class="lead">This campaign is supported by [Dr. Name], Consultant in Oncology & Women's Health. Dr. [Name] promotes evidence-based prevention and early detection, helping patients understand screening schedules, lifestyle steps, and the role of genetics.</p>
             <div class="grid cols-2">
                 <div class="card">
-                    <img id="doctor-photo" src="images/ghosn.jpg" alt="Doctor portrait" loading="lazy" style="width:100%; border-radius:12px; max-height:340px; object-fit:cover">
+                    <img id="doctor-photo" src="assets/images/breastcancer/ghosn.jpg" alt="Doctor portrait" loading="lazy" style="width:100%; border-radius:12px; max-height:340px; object-fit:cover">
                 </div>
                 <div class="card">
                     <h3 id="doctor-name" style="margin-top:0">Dr. [Name]</h3>
@@ -498,7 +123,7 @@
   <div class="card" style="padding:0; display:flex; justify-content:center; align-items:center;">
     <!-- Vertical image: constrained width, no cropping -->
     <img 
-      src="images/breastcancer2.jpg" 
+      src="assets/images/breastcancer/breastcancer2.jpg" 
       alt="Breast cancer awareness"
       loading="lazy"
       style="display:block; width:100%; max-width:520px; height:auto; object-fit:contain; border-radius:12px;" />
@@ -536,14 +161,14 @@
             </div>
             <p class="muted" style="text-align:center; margin-top:1rem">Sources: ACS, USPSTF, WCRF, NHS, WHO</p>
         </section>
-<!-- INSERT this block between the “Evidence-Based General Prevention Tips” section and the “When to Seek Care Immediately” section inside <main class="container"> -->
+<!-- INSERT this block between the "Evidence-Based General Prevention Tips" section and the "When to Seek Care Immediately" section inside <main class="container"> -->
 
 <section id="awareness-image" aria-labelledby="awareness-image-title">
   <h2 id="awareness-image-title">Awareness at a Glance</h2>
   <div class="card" style="padding:0; display:flex; justify-content:center; align-items:center;">
     <!-- Vertical image: constrained width, no cropping -->
     <img 
-      src="images/breastcancer.jpg" 
+      src="assets/images/breastcancer/breastcancer.jpg" 
       alt="Breast cancer awareness"
       loading="lazy"
       style="display:block; width:100%; max-width:520px; height:auto; object-fit:contain; border-radius:12px;" />
@@ -703,175 +328,6 @@
         </div>
     </footer>
 
-    <!-- ===== JS: WhatsApp + imaging partners + FAQ functionality ===== -->
-    <script>
-        const CLINIC_PHONE = '9613110898';
-        const WA_MESSAGE = 'Hi, I am interested in a consultation.';
-        
-        function openWhatsApp(phone, text){
-            const n = String(phone);
-            const msg = encodeURIComponent(text || '');
-            const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-            const web = 'https://web.whatsapp.com/send?phone=' + n + '&text=' + msg;
-            const api = 'https://api.whatsapp.com/send?phone=' + n + '&text=' + msg;
-            
-            if(!isMobile){
-                window.open(web, '_blank','noopener');
-                return;
-            }
-            
-            location.href = 'whatsapp://send?phone=' + n + '&text=' + msg;
-            setTimeout(function(){
-                location.href = api;
-            }, 700);
-        }
-        
-        // WhatsApp button event listeners
-        [['waHero'],['waGen'],['floatWA'],['waDoctor']].forEach(function(pair){
-            var id = pair[0];
-            var el = document.getElementById(id);
-            if(el){
-                el.addEventListener('click', function(e){
-                    e.preventDefault();
-                    openWhatsApp(CLINIC_PHONE, WA_MESSAGE);
-                });
-            }
-        });
-
-        // Share functionality
-        (function(){
-            var shareBtn = document.getElementById('floatShare');
-            var panel = document.getElementById('sharePanel');
-            var toast = document.getElementById('toast');
-            
-            function toggle(open){
-                panel.classList.toggle('open', open);
-                panel.setAttribute('aria-hidden', open ? 'false' : 'true');
-            }
-            
-            shareBtn.addEventListener('click', function(e){
-                e.preventDefault();
-                toggle(!panel.classList.contains('open'));
-            });
-            
-            panel.addEventListener('click', async function(e){
-                var btn = e.target.closest('.share-option');
-                if(!btn) return;
-                
-                var url = location.href;
-                var action = btn.dataset.action;
-                
-                if(action==='copy'){
-                    try{
-                        await navigator.clipboard.writeText(url);
-                        toast.classList.add('show');
-                        setTimeout(function(){
-                            toast.classList.remove('show');
-                        }, 1400);
-                    }catch(err){}
-                } else if(action==='whatsapp'){
-                    window.open('https://wa.me/?text=' + encodeURIComponent(url),'_blank','noopener');
-                } else if(action==='telegram'){
-                    window.open('https://t.me/share/url?url=' + encodeURIComponent(url),'_blank','noopener');
-                } else if(action==='facebook'){
-                    window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url),'_blank','noopener,width=600,height=460');
-                }
-                
-                toggle(false);
-            });
-            
-            document.addEventListener('keydown', function(e){
-                if(e.key==='Escape') toggle(false);
-            });
-            
-            document.addEventListener('click', function(e){
-                if(!panel.contains(e.target) && e.target!==shareBtn) toggle(false);
-            });
-        })();
-
-        // Imaging Partners Data
-        const PARTNERS = [
-            {
-                name: 'CMC Women Clinic (Clemenceau Medical Center)',
-                city: 'Beirut',
-                wa: '96176002212',
-                site: 'https://www.cmc.com.lb/',
-                img: 'https://upload.wikimedia.org/wikipedia/commons/2/25/Clemenceau_Medical_Center_bilingual_logo.jpg'
-            },
-            {
-                name: 'Keserwan Medical Center (KMC)',
-                city: 'Ghazir',
-                wa: '96176046555',
-                site: 'https://www.kmc.com.lb/',
-                img: 'https://www.kmc.com.lb/assets/logo.png'
-            },
-            {
-                name: 'CEMA — Centre d\'Exploration Médicale Avancée',
-                city: 'Beirut',
-                wa: '96178837501',
-                site: 'https://cema.com.lb/',
-                img: 'https://cema.com.lb/wp-content/uploads/2018/08/3d-mammogram-1.jpg'
-            }
-        ];
-        
-        var partnersWrap = document.getElementById('partners');
-        
-        function renderPartners(){
-            partnersWrap.innerHTML = '';
-            PARTNERS.forEach(function(p, idx){
-                var card = document.createElement('div');
-                card.className = 'card partner-card';
-                card.innerHTML = 
-                    '<img src="' + p.img + '" alt="' + p.name + ' logo or photo" loading="lazy">' +
-                    '<h3 style="margin:.6rem 0 0">' + p.name + '</h3>' +
-                    '<div class="muted">' + p.city + '</div>' +
-                    '<div class="cta-row" style="margin-top:.6rem">' +
-                    '  <a href="' + p.site + '" target="_blank" rel="noopener" class="btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Website</a>' +
-                    '  <a href="#" data-idx="' + idx + '" class="btn btn-wa partner-book"><i class="fa-brands fa-whatsapp"></i> Book via WhatsApp</a>' +
-                    '</div>';
-                partnersWrap.appendChild(card);
-            });
-        }
-        
-        function bookWith(idx){
-            var p = PARTNERS[idx];
-            if(!p) return;
-            openWhatsApp(p.wa, WA_MESSAGE);
-        }
-        
-        renderPartners();
-        
-        document.addEventListener('click', function(e){
-            var a = e.target.closest('.partner-book');
-            if(a){
-                e.preventDefault();
-                var idx = Number(a.dataset.idx);
-                bookWith(idx);
-            }
-        });
-
-        // FAQ functionality
-        document.addEventListener('click', function(e){
-            if(e.target.matches('.faq-question') || e.target.closest('.faq-question')){
-                e.preventDefault();
-                var button = e.target.matches('.faq-question') ? e.target : e.target.closest('.faq-question');
-                var answer = button.nextElementSibling;
-                var icon = button.querySelector('i');
-                
-                answer.classList.toggle('show');
-                icon.style.transform = answer.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
-            }
-        });
-
-        // Doctor name from URL parameter
-        (function(){
-            var params = new URLSearchParams(location.search);
-            var dr = params.get('dr');
-            if(dr){
-                var n = document.getElementById('doctor-name');
-                if(n) n.textContent = 'Dr. ' + dr;
-            }
-        })();
-    </script>
+    <script src="assets/js/breastcancer.js"></script>
 </body>
 </html>
