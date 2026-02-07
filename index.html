@@ -1,15 +1,208 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting to myHealthScore</title>
-    <meta http-equiv="refresh" content="0; url=https://myhealthscore.vercel.app/">
-    <script>
-        window.location.href = "https://myhealthscore.vercel.app/";
-    </script>
+    <title>myHealthScore | Polygenic Risk screening</title>
+    <link rel="icon" href="https://www.veritasint.com/wp-content/uploads/2021/02/Favicon.png" sizes="32x32">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+          integrity="sha512-pbkf8…your‑hash‑here…"
+          crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <link rel="stylesheet" href="assets/css/index.css">
+    <script src="assets/js/analytics.js"></script>
+    <script src="assets/js/translations.js"></script>
 </head>
 <body>
-    <p>If you are not redirected automatically, <a href="https://myhealthscore.vercel.app/">click here</a>.</p>
+    <!-- DNA Loading Screen -->
+    <div class="Loader">
+        <div class="spinnerPairHolder">
+            <div class="spinnerPair">
+                <div class="spinnerPairCercle"></div>
+                <div class="spinnerPairCercle"></div>
+            </div>
+            <div class="spinnerPair">
+                <div class="spinnerPairCercle"></div>
+                <div class="spinnerPairCercle"></div>
+            </div>
+            <div class="spinnerPair">
+                <div class="spinnerPairCercle"></div>
+                <div class="spinnerPairCercle"></div>
+            </div>
+            <div class="spinnerPair">
+                <div class="spinnerPairCercle"></div>
+                <div class="spinnerPairCercle"></div>
+            </div>
+            <div class="spinnerPair">
+                <div class="spinnerPairCercle"></div>
+                <div class="spinnerPairCercle"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+      <!-- Navigation -->
+<nav class="nav">
+  <a href="https://www.veritasint.com/myhealthscore/" class="brand-link">
+    <img src="https://www.veritasint.com/wp-content/uploads/2025/05/VeritasFZ-1.png"
+         alt="myHealthScore icon" class="brand-icon">
+  </a>
+  
+  <!-- Language Selector -->
+  <div class="language-selector">
+    <div class="selected-text" data-translate="language_selector">Language</div>
+    <div class="dropdown">
+      <div class="dropdown-option" onclick="changeLanguage('en')" data-translate="english">English</div>
+      <div class="dropdown-option" onclick="changeLanguage('ar')" data-translate="arabic">العربية</div>
+      <div class="dropdown-option" onclick="changeLanguage('fr')" data-translate="french">Français</div>
+    </div>
+  </div>
+</nav>
+
+      <header class="header">
+            <img
+                class="header-photo"
+                src="assets/images/index/giphy.webp"
+                alt="myHealthScore header"
+                loading="lazy"
+                width="512" height="768"
+            />
+</header>
+
+ <!-- Navigation -->
+
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section class="hero-section fade-in">
+                <h1 class="hero-title">
+                <span data-translate="hero_title_part1">Know your hidden disease risks in</span> <br>
+           
+                </h1>     
+                <b class="animated-underline"><b data-translate="hero_title_part2">one simple test</b></b> <br>
+                <a href="#"
+                   class="cta-button"
+                   onclick="gtag('event','whatsapp_click_header',{label:'Explore CTA',location:'hero'}); openWhatsApp(PHONE, getText('whatsapp_message')); return false;">
+                  <span data-translate="explore_cta">Explore How This Test Can Help You</span>
+                </a>
+              <p class="hero-subtitle" data-translate="hero_subtitle">myHealthScore is a simple genetic test that helps you understand your risk for common diseases like heart disease, diabetes, and certain cancers. It looks at many small changes in your DNA to uncover hidden risks that regular check-ups might miss.</p>
+            </section>
+
+            <!-- Selection Cards Section -->
+            <section class="selection-section">
+                <h2 class="section-title" data-translate="choose_test_title">Choose Your Test</h2>
+                <p style="text-align: center; color: #666; margin-bottom: 2rem;" data-translate="choose_test_subtitle">Select the appropriate test based on your gender to get personalized health insights.</p>
+                
+                <div class="selection-grid">
+                    <div class="selection-card fade-in">
+                        <div class="card-image">
+                            <img src="assets/images/index/women.webp" alt="Women's Health Test" loading="lazy">
+                        </div>
+                        <div class="card-content">
+                            <h3 data-translate="womens_health_title">Women's Health Test</h3>
+                            <p data-translate="womens_health_desc">Comprehensive genetic screening for women, including breast cancer risk assessment and other female-specific health concerns.</p>
+                            <a href="women.html" class="cta-button2">
+                                <span data-translate="start_today">Start Today</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="selection-card fade-in">
+                        <div class="card-image">
+                            <img src="assets/images/index/men.webp" alt="Men's Health Test" loading="lazy">
+                        </div>
+                        <div class="card-content">
+                            <h3 data-translate="mens_health_title">Men's Health Test</h3>
+                            <p data-translate="mens_health_desc">Personalized genetic screening for men, including prostate cancer risk assessment and other male-specific health concerns.</p>
+                            <a href="men.html" class="cta-button2">
+                                <span data-translate="start_today">Start Today</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Veritas -->
+            <section class="about2-section">
+                <div class="about-grid">
+                    <div class="about-content">
+                        <h3 data-translate="about_veritas_title">About Veritas</h3>
+                        <p data-translate="about_veritas_p1">Veritas Genetics is one of the world leaders in advanced genetic sequencing and clinical interpretation of the exome and whole genome, driving the transition to personalized and preventive medicine.</p>
+                        <p data-translate="about_veritas_p2">Using state-of-the-art technologies and the highest safety standards, Veritas Genetics helps individuals, healthcare professionals and institutions worldwide to understand and anticipate genetic risks, enabling more informed and proactive health decisions.</p>
+                        <p data-translate="about_veritas_p3">With a focus on innovation and accessibility, Veritas Genetics transforms the way we understand and care for health at every stage of life.</p>
+                    </div>
+                </div>
+            </section>
+            
+            
+        </main>
+    </div>
+
+<!-- Floating Share (left) -->
+<a id="shareBtn"
+   class="share-float"
+   href="#"
+   aria-label="Share this page">
+  <i class="fa-solid fa-heart"></i>
+</a>
+
+<!-- Fallback quick-share panel -->
+<div id="sharePanel" class="share-panel" aria-hidden="true">
+  <button class="share-option" data-action="whatsapp">
+    <i class="fa-brands fa-whatsapp"></i><span data-translate="share_whatsapp">WhatsApp</span>
+  </button>
+  <button class="share-option" data-action="facebook">
+    <i class="fa-brands fa-facebook-f"></i><span data-translate="share_facebook">Facebook</span>
+  </button>
+  <button class="share-option" data-action="telegram">
+    <i class="fa-brands fa-telegram"></i><span data-translate="share_telegram">Telegram</span>
+  </button>
+  <button class="share-option" data-action="copy">
+    <i class="fa-solid fa-link"></i><span data-translate="copy_link">Copy link</span>
+  </button>
+</div>
+<div id="copyToast" class="copy-toast" data-translate="link_copied">Link copied</div>
+
+    <script src="assets/js/index-simple.js"></script>
+    
+    <script>
+    // Language dropdown functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const languageSelector = document.querySelector('.language-selector');
+        const selectedText = languageSelector.querySelector('.selected-text');
+        
+        // Toggle dropdown on click
+        selectedText.addEventListener('click', function(e) {
+            e.stopPropagation();
+            languageSelector.classList.toggle('active');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!languageSelector.contains(e.target)) {
+                languageSelector.classList.remove('active');
+            }
+        });
+        
+        // Close dropdown when selecting a language
+        const dropdownOptions = languageSelector.querySelectorAll('.dropdown-option');
+        dropdownOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                languageSelector.classList.remove('active');
+            });
+        });
+    });
+    </script>
+
+
+<a href="#"
+   class="whatsapp-float"
+   aria-label="Chat on WhatsApp"
+   onclick="gtag('event','whatsapp_click_float',{label:'Floating WhatsApp',location:'floating'}); openWhatsApp(PHONE, getText('whatsapp_float_message')); return false;">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
 </body>
 </html>
