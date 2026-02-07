@@ -9,7 +9,7 @@ window.addEventListener("load", function () {
     }
 });
 
-const CLINIC_PHONE = '9613110898';
+const CLINIC_PHONE = '79069834';
 const WA_MESSAGE = 'Hi, I am interested in a consultation.';
 
 function openWhatsApp(phone, text){
@@ -98,21 +98,21 @@ const PARTNERS = [
     {
         name: 'CMC Women Clinic (Clemenceau Medical Center)',
         city: 'Beirut',
-        wa: '96176002212',
+        wa: '79069834',
         site: 'https://www.cmc.com.lb/',
         img: 'https://upload.wikimedia.org/wikipedia/commons/2/25/Clemenceau_Medical_Center_bilingual_logo.jpg'
     },
     {
         name: 'Keserwan Medical Center (KMC)',
         city: 'Ghazir',
-        wa: '96176046555',
+        wa: '79069834',
         site: 'https://www.kmc.com.lb/',
         img: 'https://www.kmc.com.lb/assets/logo.png'
     },
     {
         name: 'CEMA — Centre d\'Exploration Médicale Avancée',
         city: 'Beirut',
-        wa: '96178837501',
+        wa: '79069834',
         site: 'https://cema.com.lb/',
         img: 'https://cema.com.lb/wp-content/uploads/2018/08/3d-mammogram-1.jpg'
     }

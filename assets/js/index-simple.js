@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // One number everywhere
-const PHONE = '9613110898'; // full international, no "+"
+const PHONE = '79069834'; // full international, no "+"
 console.log('PHONE variable defined:', PHONE);
 
 // Opens WhatsApp without showing the "install Business" box

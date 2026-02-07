@@ -44,7 +44,7 @@ openWA?.addEventListener('click', (e) => {
 });
 
 // One number everywhere
-const PHONE = '9613110898'; // full international, no "+"
+const PHONE = '79069834'; // full international, no "+"
 
 // Opens WhatsApp without showing the "install Business" box
 function openWhatsApp(phone = PHONE, text = '') {
